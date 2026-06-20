@@ -3,940 +3,929 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>التربية الدينية — تلخيص الصف الثالث الثانوي</title>
+<title>مراجعة الوطنية | الصف الثالث الثانوي</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@500;600;700&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0c1a17;
-    --panel:#11241f;
-    --panel2:#152d27;
-    --line:#234138;
-    --gold:#c9a227;
-    --gold-soft:#e3c563;
-    --ivory:#ece6d6;
-    --muted:#93a39c;
-    --terracotta:#c1693f;
-    --teal:#3f8f7c;
+    --paper:#F6F1E4;
+    --paper-dim:#EFE7D3;
+    --ink:#211C14;
+    --ink-soft:#5b5346;
+    --navy:#0E2A43;     /* ch1: القانون والدستور */
+    --navy-tint:#E7EDF1;
+    --teal:#175E56;     /* ch2: الديمقراطية */
+    --teal-tint:#E4EFEC;
+    --burgundy:#7A2638;  /* ch3: الأحزاب السياسية */
+    --burgundy-tint:#F3E4E6;
+    --olive:#6E5B1E;     /* ch4: المشاركة السياسية */
+    --olive-tint:#F1ECDD;
+    --gold:#B8893C;
+    --line:#D8CCAE;
+    --shadow: 0 6px 18px rgba(33,28,20,0.10);
   }
   *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
   body{
     margin:0;
-    background:
-      radial-gradient(ellipse at top, #15302a 0%, var(--bg) 55%);
-    color:var(--ivory);
-    font-family:'Cairo',sans-serif;
-    line-height:1.85;
-    padding-bottom:60px;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Tajawal',sans-serif;
+    line-height:1.75;
   }
-  h1,h2,h3,.disp{font-family:'Markazi Text',serif;}
-  ::selection{background:var(--gold);color:#16241f;}
+  h1,h2,h3,h4,.disp{font-family:'Cairo',sans-serif;}
 
-  /* ---- header ---- */
-  header{
+  /* ===== Seal / stamp signature element ===== */
+  .seal{
+    --c: var(--navy);
+    width:64px;height:64px;border-radius:50%;
+    border:3px solid var(--c);
+    display:flex;align-items:center;justify-content:center;
+    position:relative;flex-shrink:0;
+    background:
+      repeating-conic-gradient(var(--c) 0deg 6deg, transparent 6deg 18deg);
+    box-shadow: inset 0 0 0 6px var(--paper);
+  }
+  .seal::after{
+    content:attr(data-num);
+    width:42px;height:42px;border-radius:50%;
+    background:var(--c);color:var(--paper);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Cairo',sans-serif;font-weight:800;font-size:20px;
+  }
+
+  /* ===== Header / Hero ===== */
+  header.hero{
+    background: linear-gradient(180deg, var(--navy) 0%, #143653 100%);
+    color:#F6F1E4;
+    padding:56px 20px 80px;
+    position:relative;
+    overflow:hidden;
+    text-align:center;
+  }
+  header.hero::before{
+    content:"";
+    position:absolute;inset:0;
+    background-image:
+      radial-gradient(circle at 12% 20%, rgba(184,137,60,0.18) 0, transparent 40%),
+      radial-gradient(circle at 88% 80%, rgba(184,137,60,0.15) 0, transparent 45%);
+  }
+  .hero-eyebrow{
+    position:relative;z-index:1;
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:13px; letter-spacing:.5px; color:var(--gold);
+    border:1px solid rgba(184,137,60,.5); border-radius:30px;
+    padding:6px 18px; margin-bottom:22px;
+  }
+  header.hero h1{
+    position:relative;z-index:1;
+    font-size:clamp(32px,5vw,52px);
+    font-weight:900; margin:0 0 12px;
+  }
+  header.hero p.sub{
+    position:relative;z-index:1;
+    color:#cfd9e2; font-size:17px; max-width:560px; margin:0 auto;
+  }
+  .instructor{
+    position:relative;z-index:1;
+    margin-top:28px; font-size:14px; color:#aebbc7;
+  }
+  .instructor b{color:#F6F1E4;}
+
+  /* ===== Sticky chapter nav ===== */
+  nav.toc{
     position:sticky; top:0; z-index:50;
-    background:rgba(12,26,23,.96);
+    background:rgba(246,241,228,0.96);
     backdrop-filter:blur(6px);
     border-bottom:1px solid var(--line);
-    padding:14px 18px 10px;
+    padding:10px 14px;
   }
-  .titlebar{display:flex; align-items:center; justify-content:space-between; gap:10px; max-width:880px; margin:0 auto;}
-  .titlebar h1{font-size:1.5rem; margin:0; color:var(--gold-soft); font-weight:700;}
-  .titlebar p{margin:2px 0 0; color:var(--muted); font-size:.82rem;}
-  .controls{display:flex; gap:8px; max-width:880px; margin:10px auto 0;}
-  #search{
-    flex:1; background:var(--panel2); border:1px solid var(--line); color:var(--ivory);
-    border-radius:10px; padding:9px 14px; font-family:'Cairo'; font-size:.92rem; outline:none;
+  nav.toc ul{
+    list-style:none; margin:0; padding:0;
+    display:flex; gap:8px; justify-content:center; flex-wrap:wrap;
+    max-width:1100px; margin-inline:auto;
   }
-  #search:focus{border-color:var(--gold);}
-  .btn{
-    background:transparent; border:1px solid var(--line); color:var(--muted);
-    border-radius:10px; padding:9px 12px; font-family:'Cairo'; font-size:.8rem; cursor:pointer; white-space:nowrap;
+  nav.toc a{
+    text-decoration:none; color:var(--ink);
+    font-family:'Cairo',sans-serif; font-weight:700; font-size:13.5px;
+    padding:8px 16px; border-radius:30px; border:1.5px solid var(--line);
+    transition:all .2s;
+    white-space:nowrap;
   }
-  .btn:hover{border-color:var(--gold); color:var(--gold-soft);}
-  nav.units{
-    display:flex; gap:6px; overflow-x:auto; max-width:880px; margin:10px auto 0; padding-bottom:4px;
-    scrollbar-width:thin;
-  }
-  nav.units a{
-    flex:0 0 auto; font-size:.78rem; color:var(--muted); text-decoration:none;
-    border:1px solid var(--line); padding:6px 12px; border-radius:999px; white-space:nowrap;
-  }
-  nav.units a:hover{color:var(--gold-soft); border-color:var(--gold);}
+  nav.toc a:hover{ border-color:var(--gold); color:var(--navy); }
 
-  main{max-width:880px; margin:0 auto; padding:18px 16px 0;}
+  main{max-width:1100px; margin:0 auto; padding:0 18px 60px;}
 
-  /* ---- star divider (signature element) ---- */
-  .divider{display:flex; align-items:center; gap:14px; margin:38px 0 18px;}
-  .divider .ln{flex:1; height:1px; background:linear-gradient(90deg, transparent, var(--line) 30%, var(--line) 70%, transparent);}
-  .divider svg{width:22px; height:22px; flex:0 0 auto;}
-
-  .unit{margin-bottom:6px;}
-  .unit-head{
-    background:linear-gradient(135deg, var(--panel2), var(--panel));
-    border:1px solid var(--line); border-right:4px solid var(--gold);
-    border-radius:14px; padding:14px 18px; margin-bottom:14px;
+  /* ===== Chapter section ===== */
+  section.chapter{ margin-top:62px; scroll-margin-top:70px;}
+  .chapter-head{
+    display:flex; align-items:center; gap:18px;
+    margin-bottom:28px;
   }
-  .unit-head .eyebrow{font-size:.72rem; letter-spacing:.12em; color:var(--gold); font-weight:700;}
-  .unit-head h2{margin:4px 0 0; font-size:1.5rem; color:var(--ivory); font-weight:700;}
+  .chapter-head .seal{--c: var(--accent);}
+  .chapter-head h2{
+    font-size:clamp(22px,3.2vw,30px); font-weight:800; margin:0;
+    color:var(--accent);
+  }
+  .chapter-head .eyebrow{
+    display:block; font-size:12.5px; color:var(--ink-soft);
+    font-family:'Tajawal',sans-serif; margin-bottom:4px; letter-spacing:.3px;
+  }
+  .chapter-rule{
+    height:2px; background:linear-gradient(90deg, var(--accent), transparent);
+    margin-bottom:30px; border-radius:2px;
+  }
 
-  /* ---- lesson cards ---- */
-  details.lesson{
-    background:var(--panel); border:1px solid var(--line); border-radius:12px;
+  /* ===== Topic block ===== */
+  .topic{margin-bottom:34px;}
+  .topic > h3{
+    font-size:18px; font-weight:700; color:var(--ink);
+    margin:0 0 14px; padding-right:14px;
+    border-right:4px solid var(--accent);
+  }
+  .topic > .lead{
+    background:var(--tint); border:1px solid var(--line);
+    border-radius:10px; padding:14px 18px; margin-bottom:14px;
+    font-size:15px; color:var(--ink-soft);
+  }
+  .topic > .lead b{color:var(--ink);}
+
+  /* ===== Card grid ===== */
+  .grid{
+    display:grid; gap:14px;
+    grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+  }
+  .card{
+    background:#fff; border:1px solid var(--line); border-radius:12px;
+    padding:16px 18px; box-shadow:var(--shadow);
+    position:relative;
+  }
+  .card h4{
+    margin:0 0 8px; font-size:15px; color:var(--accent);
+    font-weight:800; display:flex; align-items:center; gap:8px;
+  }
+  .card h4::before{
+    content:""; width:8px;height:8px;border-radius:50%;
+    background:var(--accent); flex-shrink:0;
+  }
+  .card ul{margin:0; padding-right:18px; font-size:14px; color:var(--ink);}
+  .card ul li{margin-bottom:5px;}
+  .card p{margin:0; font-size:14px;}
+
+  /* compact two-col comparison table */
+  .compare{
+    display:grid; grid-template-columns:1fr 1fr; gap:0;
+    border:1px solid var(--line); border-radius:12px; overflow:hidden;
+    margin-bottom:14px; background:#fff;
+  }
+  .compare > div{padding:14px 16px;}
+  .compare > div:first-child{border-left:1px solid var(--line);}
+  .compare h5{
+    margin:0 0 8px; font-family:'Cairo',sans-serif; font-size:14.5px;
+    color:var(--accent); font-weight:800;
+  }
+  .compare ul{margin:0; padding-right:16px; font-size:13.5px;}
+  .compare ul li{margin-bottom:4px;}
+  @media (max-width:560px){
+    .compare{grid-template-columns:1fr;}
+    .compare > div:first-child{border-left:none; border-bottom:1px solid var(--line);}
+  }
+
+  /* timeline for revolutions / constitution stages */
+  .timeline{position:relative; padding-right:26px; border-right:2px dashed var(--accent);}
+  .tl-item{position:relative; margin-bottom:22px;}
+  .tl-item::before{
+    content:""; position:absolute; right:-32px; top:4px;
+    width:12px;height:12px; border-radius:50%;
+    background:var(--accent); border:3px solid var(--paper);
+  }
+  .tl-item h4{margin:0 0 6px; font-size:15px; color:var(--accent); font-family:'Cairo',sans-serif;}
+  .tl-item .tag{
+    display:inline-block; font-size:11.5px; background:var(--tint);
+    padding:2px 10px; border-radius:20px; margin-bottom:6px; color:var(--ink-soft);
+  }
+  .tl-item ul{margin:0; padding-right:18px; font-size:13.8px;}
+
+  /* accordion (details) for memorization */
+  details.mem{
+    background:#fff; border:1px solid var(--line); border-radius:10px;
     margin-bottom:10px; overflow:hidden;
   }
-  details.lesson[open]{border-color:var(--teal);}
-  summary{
-    cursor:pointer; padding:13px 16px; font-weight:700; font-size:1rem; color:var(--gold-soft);
-    display:flex; align-items:center; gap:10px; list-style:none;
+  details.mem summary{
+    cursor:pointer; list-style:none; padding:13px 18px;
+    font-family:'Cairo',sans-serif; font-weight:700; font-size:14.5px;
+    color:var(--accent); display:flex; align-items:center; justify-content:space-between;
   }
-  summary::-webkit-details-marker{display:none;}
-  summary::before{
-    content:'+'; color:var(--gold); font-size:1.1rem; width:18px; text-align:center; flex:0 0 auto;
+  details.mem summary::after{
+    content:"+"; font-size:20px; font-weight:400; color:var(--accent);
   }
-  details[open] summary::before{content:'−';}
-  .lesson-body{padding:2px 18px 16px;}
+  details.mem[open] summary::after{content:"−";}
+  details.mem summary::-webkit-details-marker{display:none;}
+  details.mem .body{padding:0 18px 16px; font-size:14px;}
+  details.mem .body ul{padding-right:18px; margin:6px 0;}
+  details.mem .body li{margin-bottom:5px;}
 
-  h4.sub{color:var(--teal); font-size:.95rem; margin:14px 0 6px; font-weight:700; border-bottom:1px dashed var(--line); padding-bottom:4px;}
-  ul{margin:6px 0; padding-inline-start:20px;}
-  li{margin-bottom:5px;}
-  ol{padding-inline-start:22px;}
-  p{margin:6px 0;}
-  b, strong{color:var(--gold-soft);}
+  /* badge row (small chips) */
+  .chips{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0;}
+  .chip{
+    background:var(--tint); border:1px solid var(--line);
+    border-radius:20px; padding:5px 14px; font-size:13px; color:var(--accent);
+    font-weight:600;
+  }
 
-  /* callout boxes */
+  /* highlight box */
   .note{
-    background:rgba(193,105,63,.1); border-right:3px solid var(--terracotta);
-    border-radius:8px; padding:10px 14px; margin:10px 0; font-size:.92rem;
+    border-right:4px solid var(--gold); background:#FBF6E9;
+    padding:12px 16px; border-radius:8px; font-size:14px; margin:14px 0;
   }
-  .note .tag{color:var(--terracotta); font-weight:800; font-size:.78rem; display:block; margin-bottom:4px;}
-  .quote{
-    background:rgba(63,143,124,.1); border-right:3px solid var(--teal);
-    border-radius:8px; padding:10px 14px; margin:10px 0; font-size:.95rem; color:var(--ivory);
+  .note b{color:var(--burgundy);}
+
+  /* footer */
+  footer{
+    text-align:center; padding:34px 18px 50px; color:var(--ink-soft); font-size:13px;
+    border-top:1px solid var(--line); margin-top:40px;
   }
-  .quote .tag{color:var(--teal); font-weight:800; font-size:.78rem; display:block; margin-bottom:4px;}
+  footer .brand{font-family:'Cairo',sans-serif; font-weight:800; color:var(--navy); font-size:15px; margin-bottom:6px;}
 
-  table{width:100%; border-collapse:collapse; margin:10px 0; font-size:.88rem;}
-  th,td{border:1px solid var(--line); padding:7px 10px; text-align:right; vertical-align:top;}
-  th{background:var(--panel2); color:var(--gold-soft); font-weight:700;}
-  tr:nth-child(even) td{background:rgba(255,255,255,.02);}
+  /* print */
+  @media print{
+    nav.toc{display:none;}
+    header.hero{background:var(--navy)!important; -webkit-print-color-adjust:exact;}
+  }
 
-  .pills{display:flex; flex-wrap:wrap; gap:6px; margin:8px 0;}
-  .pill{background:var(--panel2); border:1px solid var(--line); border-radius:999px; padding:4px 11px; font-size:.82rem; color:var(--ivory);}
-
-  footer{max-width:880px; margin:30px auto 0; padding:16px; text-align:center; color:var(--muted); font-size:.8rem; border-top:1px solid var(--line);}
-
-  .hide{display:none !important;}
-
-  @media (prefers-reduced-motion: reduce){*{transition:none !important;}}
+  /* utility per-chapter accent assignment */
+  #ch1{--accent:var(--navy); --tint:var(--navy-tint);}
+  #ch2{--accent:var(--teal); --tint:var(--teal-tint);}
+  #ch3{--accent:var(--burgundy); --tint:var(--burgundy-tint);}
+  #ch4{--accent:var(--olive); --tint:var(--olive-tint);}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="titlebar">
-    <div>
-      <h1>التربية الدينية الإسلامية</h1>
-      <p>تلخيص شامل — الصف الثالث الثانوي</p>
-    </div>
-  </div>
-  <div class="controls">
-    <input id="search" type="text" placeholder="ابحث عن أي معلومة... (مثال: لقمان، الزكاة، الملائكة)">
-    <button class="btn" id="expandAll">فتح الكل</button>
-    <button class="btn" id="collapseAll">إغلاق الكل</button>
-  </div>
-  <nav class="units">
-    <a href="#u1">١ لقمان والدعوة</a>
-    <a href="#u2">٢ الكون والصلاة</a>
-    <a href="#u3">٣ الابتلاء والبخاري</a>
-    <a href="#u4">٤ الغيب والعقل</a>
-    <a href="#u5">٥ التكافل</a>
-    <a href="#u6">٦ سورة النور</a>
-  </nav>
+<header class="hero">
+  <span class="hero-eyebrow">★ مراجعة شاملة ★</span>
+  <h1>مراجعة منهج الوطنية</h1>
+  <p class="sub">الصف الثالث الثانوي — ملخص مبسّط لكل الدروس في شكل بطاقات سهلة الحفظ والمراجعة السريعة قبل الامتحان</p>
+  <div class="instructor">إعداد: <b>أ/ محمد ناصر</b> — أستاذ مادة الجغرافيا والتاريخ &nbsp;|&nbsp; 01017188028 - 01013353859</div>
 </header>
 
-<main id="content">
+<nav class="toc">
+  <ul>
+    <li><a href="#ch1">① القانون والدستور</a></li>
+    <li><a href="#ch2">② الديمقراطية</a></li>
+    <li><a href="#ch3">③ الأحزاب السياسية</a></li>
+    <li><a href="#ch4">④ المشاركة السياسية</a></li>
+  </ul>
+</nav>
 
-<!-- ============ UNIT 1 ============ -->
-<section class="unit" id="u1">
-  <div class="unit-head"><span class="eyebrow">الوحدة الأولى</span><h2>من وصايا لقمان</h2></div>
+<main>
 
-  <details class="lesson" open>
-    <summary>١ — سورة لقمان</summary>
-    <div class="lesson-body">
-      <div class="pills"><span class="pill">مكية (إلا آيتين مدنيتين)</span><span class="pill">سبب التسمية: قصة لقمان الحكيم ووصاياه لابنه</span></div>
+<!-- ============================================================ -->
+<!-- CHAPTER 1 -->
+<!-- ============================================================ -->
+<section class="chapter" id="ch1">
+  <div class="chapter-head">
+    <div class="seal" data-num="1"></div>
+    <div>
+      <span class="eyebrow">الفصل الأول</span>
+      <h2>القانون والدستور</h2>
+    </div>
+  </div>
+  <div class="chapter-rule"></div>
 
-      <h4 class="sub">قضايا السورة</h4>
-      <ul>
-        <li>قضية العقيدة والإيمان بالله الواحد الأحد.</li>
-        <li>المقارنة بين المؤمنين والكافرين.</li>
-      </ul>
+  <div class="topic">
+    <h3>أولًا: الأخلاق</h3>
+    <div class="lead">
+      هي <b>مُثل نقدّرها ونسعى لتحقيقها</b> بوصفها خيرًا، تمثل أهدافًا ثابتة لحياتنا — مثل: الإحسان إلى الفقراء، الصدق، الصلة بالرحم.
+    </div>
+    <div class="note">رغم أهمية الأخلاق، إلا أنها <b>لا تكفي وحدها</b> لإقامة العدل بين أفراد المجتمع، لأن المجتمع لا يستقيم دون قانون يحكمه.</div>
+  </div>
 
-      <h4 class="sub">صفات المؤمنين ↔ صفات الكافرين</h4>
-      <table>
-        <tr><th>المؤمنون</th><th>الكافرون</th></tr>
-        <tr><td>اليقين بالآخرة (إيمان جازم بالحساب والثواب)</td><td>الاستكبار عن سماع الحق</td></tr>
-        <tr><td>إيتاء الزكاة</td><td>السعي لإضلال الناس عن سبيل الله</td></tr>
-        <tr><td>إقامة الصلاة بخشوع وإخلاص</td><td>الانشغال بلهو الحديث والغناء والألحان</td></tr>
-        <tr><td>—</td><td>الاستهزاء بآيات الله</td></tr>
-      </table>
-      <table>
-        <tr><th>جزاء المؤمنين</th><th>مصير الكافرين</th></tr>
-        <tr><td>هم على هدى من ربهم — وهم المفلحون الفائزون في الدنيا والآخرة</td><td>العذاب المهين يوم القيامة</td></tr>
-      </table>
+  <div class="topic">
+    <h3>ثانيًا: القانون</h3>
+    <div class="lead">القانون هو <b>قواعد وأحكام عامة مجرّدة</b> تنظم الأفراد في المجتمع، وهي ملزمة ومقترنة بجزاء لمن يخالفها.</div>
 
-      <h4 class="sub">هدف الآيات المكية (4 أهداف)</h4>
-      <ol>
-        <li>الدعوة إلى التوحيد الخالص.</li>
-        <li>الإيمان بالبعث والحساب والجنة والنار.</li>
-        <li>بيان عيوب الجاهلية.</li>
-        <li>نشر الفضيلة ومقاومة الرذيلة.</li>
-      </ol>
+    <details class="mem" open>
+      <summary>1- جذور القانون التاريخية</summary>
+      <div class="body">
+        <div class="compare">
+          <div>
+            <h5>الحضارة المصرية القديمة</h5>
+            <ul>
+              <li>قام المصريون بوضع قانون "ماعت"</li>
+              <li>يضم 42 مادة، جوهره الفضيلة</li>
+              <li>الوثائق أكدت أن الملوك كانوا يحترمون قانون ماعت</li>
+            </ul>
+          </div>
+          <div>
+            <h5>الحضارة البابلية القديمة</h5>
+            <ul>
+              <li>وضعوا قوانين حمورابي</li>
+              <li>مجموعة من القوانين والتشريعات</li>
+              <li>تميزت بشموليتها لجميع مجالات الحياة</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </details>
 
-      <h4 class="sub">وصايا لقمان لابنه (6 وصايا)</h4>
-      <ol>
-        <li>التوحيد والتحذير من الشرك.</li>
-        <li>إقامة الصلاة والأمر بالمعروف والنهي عن المنكر.</li>
-        <li>الصبر على الأذى، والاعتدال في المشي، وخفض الصوت.</li>
-        <li>مراقبة الله وخشيته.</li>
-        <li>النهي عن الغرور والتكبر.</li>
-        <li>بر الوالدين وطاعتهما في كل شيء إلا في معصية الله.</li>
-      </ol>
+    <details class="mem">
+      <summary>2- خصائص القانون</summary>
+      <div class="body">
+        <div class="chips">
+          <span class="chip">عامة ومجرّدة — تطبَّق على جميع الأشخاص، لا تخص واقعة مادية بل وقائع مجرّدة</span>
+        </div>
+        <div class="chips">
+          <span class="chip">منظِّمة للسلوك — تنظم سلوك الأفراد في المجتمع، تحكم على المظهر الخارجي للإنسان فقط</span>
+        </div>
+        <div class="chips">
+          <span class="chip">ملزمة مقترنة بالجزاء — يجب التزام المواطن بالقوانين، والأثر الرادع يُطبَّق على كل من يخالف القانون</span>
+        </div>
+      </div>
+    </details>
 
-      <div class="note"><span class="tag">⚠ خَلِّ بالك — نقاط امتحانية</span>
+    <details class="mem">
+      <summary>3- مصادر القانون</summary>
+      <div class="body">
+        <div class="grid">
+          <div class="card">
+            <h4>التشريع</h4>
+            <p>عملية وضع القواعد القانونية في صورة مكتوبة بواسطة السلطة المختصة.</p>
+          </div>
+          <div class="card">
+            <h4>العُرف</h4>
+            <p>اعتياد الناس على سلوك معين في أحد نواحي الحياة حتى يصبح قاعدة عامة.</p>
+          </div>
+          <div class="card">
+            <h4>مبادئ الشريعة الإسلامية</h4>
+            <p>مبادئ عامة مُسلَّم بها في جميع مذاهب الفقه الإسلامي، تُطبَّق على جميع المواطنين بغض النظر عن الديانة.</p>
+          </div>
+          <div class="card">
+            <h4>مبادئ القانون الطبيعي</h4>
+            <p>قواعد ثابتة لا تتغيّر بتغيّر الزمان والمكان، نستنتجها بالعقل.</p>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mem">
+      <summary>4- فروع القانون</summary>
+      <div class="body">
+        <div class="compare">
+          <div>
+            <h5>القانون العام</h5>
+            <ul>
+              <li>قواعد قانونية تنظم العلاقات التي تكون الدولة طرفًا فيها</li>
+              <li>مثل: الدستوري - الدولي - الجنائي - المالي - الإداري</li>
+            </ul>
+          </div>
+          <div>
+            <h5>القانون الخاص</h5>
+            <ul>
+              <li>قواعد تنظم العلاقة بين الأفراد، أو بينهم وبين الدولة</li>
+              <li>مثل: المدني - التجاري - العمل - البحري والجوي</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <div class="topic">
+    <h3>ثالثًا: العلاقة بين قواعد القانون ومبادئ الأخلاق وتعاليم الدين</h3>
+    <div class="grid">
+      <div class="card">
+        <h4>قواعد القانون</h4>
         <ul>
-          <li>أجمع أكثر العلماء أن <b>لقمان لم يكن نبيًا</b>، إنما كان عبدًا صالحًا.</li>
-          <li>الحروف المقطعة (الم) في أول السورة: تعجيز للمشركين، وإشعار بأن القرآن المُعجِز مكوَّن من نفس الحروف العربية التي يستخدمونها.</li>
-          <li>الأمر ببر الوالدين جاء <b>مباشرة بعد التوحيد</b> لعظيم فضلهما.</li>
-          <li>إذا أمر الوالدان بالشرك: لا طاعة لهما في المعصية، لكن يجب الإحسان إليهما ومعاملتهما بالحسنى — لأن المرجع إلى الله في النهاية.</li>
-          <li>استنبط ابن عباس من آية "وحمله وفصاله في عامين" أن <b>أقل مدة للحمل ستة أشهر</b>.</li>
+          <li>تهتم بعلاقة الإنسان بباقي المجتمع</li>
+          <li>غايتها حفظ الأمن والنظام</li>
+          <li>ملزمة للأفراد، ولا تتعلق بالنوايا (جزاء مادي)</li>
         </ul>
       </div>
-
-      <h4 class="sub">معاني مفردات مهمة</h4>
-      <table>
-        <tr><th>الكلمة</th><th>المعنى</th></tr>
-        <tr><td>تَميد</td><td>تتحرك</td></tr>
-        <tr><td>بَثّ</td><td>نشر</td></tr>
-        <tr><td>وهنًا على وهن</td><td>حملته أمه وهي تزداد ضعفًا، وهي تتعب كل يوم</td></tr>
-        <tr><td>فصاله في عامين</td><td>أي فطامه في تمام عامين</td></tr>
-        <tr><td>جاهداك</td><td>حاولا منعك بشدة</td></tr>
-        <tr><td>لا تُصَعِّر خدك للناس</td><td>لا تُمل ولا تتكبر، صفحة وجهك كما هو دَيدن المتكبرين</td></tr>
-        <tr><td>أناب</td><td>رجع</td></tr>
-        <tr><td>مختال فخور</td><td>متكبر مغرور</td></tr>
-        <tr><td>واقصد</td><td>كن معتدلًا</td></tr>
-        <tr><td>أنكر</td><td>أقبح</td></tr>
-      </table>
-    </div>
-  </details>
-
-  <details class="lesson">
-    <summary>٢ — الدعوة إلى الله</summary>
-    <div class="lesson-body">
-      <h4 class="sub">المفهوم والمعنى الأوسع</h4>
-      <p><b>مفهوم الدعوة:</b> تعريف الناس بالمنهج الذي ارتضاه الله لعباده من أوامر ونواهٍ ليسير البشر على الطريق المستقيم.</p>
-      <p><b>المعنى الأوسع:</b> أن يكون كل مسلم داعية إلى الله بسلوكه وأفعاله وأقواله.</p>
-
-      <h4 class="sub">أهداف الدعوة (4)</h4>
-      <ul>
-        <li>تبصير الناس بما يصلح شؤونهم الدنيوية والأخروية.</li>
-        <li>التحذير من الشرور والشقاء.</li>
-        <li>تطهير النفوس من الرذائل.</li>
-        <li>تحرير العقول من الأهواء.</li>
-      </ul>
-
-      <h4 class="sub">الفرق بين الصلاح والإصلاح</h4>
-      <table>
-        <tr><th>الصلاح</th><th>الإصلاح</th></tr>
-        <tr><td>تقويم النفس وتهذيبها (في ذات النفس)</td><td>يكون للغير، بدعوته والنصح له</td></tr>
-      </table>
-      <p>الإصلاح أعمّ من الصلاح، وهو طريق الخيرية لهذه الأمة — أراد الله لهذه الأمة أن تتخطى مرتبة الصلاح إلى مرتبة الإصلاح.</p>
-
-      <div class="quote"><span class="tag">حديث</span>"من دلَّ على خيرٍ فله مثل أجر فاعله" — رواه مسلم</div>
-      <p>يُفهم منه: <b>الدعوة مسؤولية الجميع</b> (الإمام – الرجل في بيته – المرأة – الخادم) — حديث "كلكم راعٍ وكلكم مسؤول عن رعيته".</p>
-
-      <h4 class="sub">أخلاق الداعية إلى الله</h4>
-      <div class="pills">
-        <span class="pill">الرفق واللين</span><span class="pill">الصبر والتسامح وتحمل الأذى</span>
-        <span class="pill">عدم التكفير والتشدد</span><span class="pill">عدم الفضيحة أو التحقير</span>
-        <span class="pill">الصدق في القول والعمل</span><span class="pill">معايشة الواقع والتفاعل معه</span>
-      </div>
-
-      <h4 class="sub">مراتب تغيير المنكر (حديث أبي سعيد الخدري)</h4>
-      <ol>
-        <li><b>باليد:</b> خاص بولي الأمر أو من له ولاية.</li>
-        <li><b>باللسان:</b> بالدعوة والموعظة.</li>
-        <li><b>بالقلب:</b> لمن لا يستطيع، وهو أضعف الإيمان.</li>
-      </ol>
-      <div class="note"><span class="tag">⚠ خَلِّ بالك</span>سوء فهم هذه المراتب قد يؤدي إلى التطرف والعدوان وتشويه صورة الإسلام. قال الشعراوي: "يكون التغيير باليد مع كل من لك عليه ولاية، ولم يؤدِّ تغيير المنكر إلى مفسدة أكبر".</div>
-    </div>
-  </details>
-
-  <details class="lesson">
-    <summary>٣ — دروس من غزوات الرسول ﷺ</summary>
-    <div class="lesson-body">
-      <table>
-        <tr><th>الغزوة</th><th>التاريخ</th><th>أهم الدروس</th></tr>
-        <tr>
-          <td><b>أُحُد</b></td>
-          <td>15 شوال، السنة 3 هـ</td>
-          <td>
-            • عدم عصيان أوامر الرسول ﷺ (مخالفة الرماة)<br>
-            • خطورة إيثار الدنيا على الآخرة (انشغالهم بالغنائم)<br>
-            • ضرورة الأخذ بالأسباب (لبس النبي ﷺ درعين استعدادًا)
-          </td>
-        </tr>
-        <tr>
-          <td><b>حُنين</b></td>
-          <td>بعد فتح مكة، سنة 8 هـ</td>
-          <td>
-            السبب: هوازن وثقيف استعدوا لمهاجمة المسلمين. جيش المسلمين 12 ألفًا.<br>
-            النتيجة: اغترّ المسلمون بالكثرة فانهزموا أولًا، ثبت النبي ﷺ، نادى العباس بالناس فرجعوا وانتصروا.<br>
-            • التفاؤل وعدم اليأس<br>
-            • العبرة ليست بالكثرة (آية: ويوم حنين إذ أعجبتكم كثرتكم)<br>
-            • العجلة من أسباب الهزيمة (استعجل الشباب قبل تمام الاستعداد)<br>
-            • استخدام الوسائل المتاحة (صوت العباس الجهوري لجمع الناس)
-          </td>
-        </tr>
-        <tr>
-          <td><b>تبوك</b><br>(غزوة العُسرة)</td>
-          <td>9 هـ</td>
-          <td>
-            السبب: خشي الروم قوة المسلمين فأرسلوا جيشًا 40,000 لمهاجمة المدينة. خرج النبي ﷺ بـ30,000.<br>
-            • أهمية المعلومات عن العدو (مكّن من الاستعداد الجيد)<br>
-            • ممارسة الشورى (مع أبي بكر بالدعاء عند العطش، ومع عمر بعدم نحر الإبل وعدم التوغل بالشام)<br>
-            • التدريب العملي على الشدائد (مسافات طويلة، ظروف صعبة، قلة زاد)
-          </td>
-        </tr>
-      </table>
-    </div>
-  </details>
-</section>
-
-<div class="divider"><div class="ln"></div>
-  <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="50,2 61,38 98,38 68,60 79,96 50,74 21,96 32,60 2,38 39,38" stroke="#c9a227" stroke-width="3" stroke-linejoin="round"/></svg>
-<div class="ln"></div></div>
-
-<!-- ============ UNIT 2 ============ -->
-<section class="unit" id="u2">
-  <div class="unit-head"><span class="eyebrow">الوحدة الثانية</span><h2>من السنن الكونية — الصلاة — الملائكة</h2></div>
-
-  <details class="lesson">
-    <summary>١ — من السنن الكونية (الاختلاف)</summary>
-    <div class="lesson-body">
-      <h4 class="sub">مظاهر الاختلاف في الكون</h4>
-      <table>
-        <tr><th>المظهر</th><th>صورة الاختلاف</th></tr>
-        <tr><td>الماء</td><td>عذب فرات (الأنهار) وملح أُجاج (البحار) — ومنه تخرج أنواع مختلفة من النباتات والثمرات</td></tr>
-        <tr><td>النبات</td><td>تنوع كبير في الشكل واللون والطعم وطرق التكاثر</td></tr>
-        <tr><td>الأنعام والدواب</td><td>اختلاف في الألوان والأنواع والحركة</td></tr>
-        <tr><td>الجبال</td><td>تختلف لونًا وشكلًا وموقعًا وتثبيتًا للأرض</td></tr>
-        <tr><td>الرياح</td><td>منها المبشرة بالخير، ومنها المهلكة</td></tr>
-      </table>
-
-      <p><b>اختلاف الطبيعة البشرية:</b> اللغة، اللون، العرق، العادات، التقاليد، الأعراف، العقيدة، الفكر، المصالح، الغايات (آية الحجرات: "شعوبًا وقبائل لتعارفوا").</p>
-
-      <div class="note"><span class="tag">⚠ خطورة إنكار سنة الاختلاف</span>يؤدي إلى النزاعات والصراعات الفكرية والدينية، وهو ما يخالف مقاصد الإسلام؛ فالإسلام يُقرّ الاختلاف لكنه يضع له ضوابط تمنع الفتنة والتعصب.</div>
-
-      <h4 class="sub">منهج التآلف والتقارب (3 مراحل)</h4>
-      <ol>
-        <li><b>الاعتراف:</b> التسليم بوجود رأي آخر.</li>
-        <li><b>التعرّف:</b> دراسة هذا الرأي وفهم أبعاده.</li>
-        <li><b>التعارف:</b> التفاعل الحضاري والسعي إلى أرضية مشتركة.</li>
-      </ol>
-
-      <h4 class="sub">آداب الاختلاف في الإسلام</h4>
-      <div class="pills">
-        <span class="pill">التسامح</span><span class="pill">قبول الآخر</span><span class="pill">الحياء</span>
-        <span class="pill">الإنصاف</span><span class="pill">ضبط النفس</span><span class="pill">التفاوض</span><span class="pill">التحكيم</span>
-      </div>
-
-      <h4 class="sub">نماذج من سلف الأمة</h4>
-      <ul>
-        <li>عمر بن الخطاب وابن مسعود اختلفا في مائة مسألة ولم يتنازعا.</li>
-        <li>الإمام الشافعي: "ما كلمت أحدًا في قضية إلا وأحببت أن يُظهر الله الحق على لسانه أو لساني".</li>
-        <li>الإمام أحمد بن حنبل أثنى على من خالفه في الفروع الفقهية.</li>
-      </ul>
-    </div>
-  </details>
-
-  <details class="lesson">
-    <summary>٢ — فضل الصلاة</summary>
-    <div class="lesson-body">
-      <h4 class="sub">مفهوم الصلاة</h4>
-      <table>
-        <tr><td>لغةً</td><td>الدعاء</td></tr>
-        <tr><td>من الله</td><td>حسن الثناء</td></tr>
-        <tr><td>من الملائكة</td><td>الدعاء</td></tr>
-        <tr><td>اصطلاحًا</td><td>أقوال وأفعال مخصوصة، مفتتحة بالتكبير، مختتمة بالتسليم</td></tr>
-      </table>
-
-      <h4 class="sub">فضل الصلاة</h4>
-      <div class="pills">
-        <span class="pill">أول ما يُسأل عنه العبد يوم القيامة</span>
-        <span class="pill">ركن أساسي من أركان الإسلام (الركن الثاني)</span>
-        <span class="pill">عماد الدين: من أقامها أقام الدين، ومن هدمها هدم الدين</span>
-      </div>
-
-      <h4 class="sub">الأثر النفسي للصلاة</h4>
-      <ul>
-        <li>يفرّ إلى ربه مُقبلًا وطامعًا في عفوه.</li>
-        <li>إشراق للروح وأنس بالله.</li>
-        <li>طمأنينة للنفس وسعة للصدر بالأمل.</li>
-        <li>الشعور بالعزة والكرامة.</li>
-        <li>الثقة بوعد الله في الدنيا والآخرة.</li>
-      </ul>
-      <p>أثبتت الدراسات النفسية الحديثة أن للصلاة دورًا علاجيًا في: تخفيف التوترات العصبية وخفض القلق، وترسيخ التركيز والهدوء النفسي.</p>
-      <div class="quote"><span class="tag">قرآن</span>"وأقم الصلاة إن الصلاة تنهى عن الفحشاء والمنكر"</div>
-
-      <h4 class="sub">الخشوع</h4>
-      <p><b>تعريفه:</b> حضور القلب مع الله وخشيته، ويزداد بالتدبر والتركيز في التلاوة.</p>
-      <p><b>يتحقق بـ:</b> الاجتهاد في التركيز، وعدم التشتت أو الالتفات أو كثرة الحركة، والتدبر أثناء تلاوة القرآن.</p>
-
-      <h4 class="sub">صلاة الجنازة</h4>
-      <table>
-        <tr><th>البند</th><th>التفصيل</th></tr>
-        <tr><td>حكمها</td><td>فرض كفاية — إذا قام بها البعض سقط عن الباقين</td></tr>
-        <tr><td>كيفيتها</td><td>
-          1) القيام عند رأس الميت (إن كان رجلًا) أو وسطه (إن كانت امرأة)<br>
-          2) التكبيرة الأولى + الفاتحة<br>
-          3) التكبيرة الثانية + الصلاة على النبي ﷺ (كالتشهد)<br>
-          4) التكبيرة الثالثة + الدعاء للميت<br>
-          5) التكبيرة الرابعة + الدعاء لعامة المسلمين، ثم التسليم
-        </td></tr>
-        <tr><td>أنواع خاصة</td><td>
-          <b>صلاة القبر:</b> لمن فاتته الصلاة قبل الدفن.<br>
-          <b>صلاة الغائب:</b> لمن علم بوفاة شخص خارج البلد ولو بعد مدة.<br>
-          <b>صلاة السقط:</b> إن تمّ له 4 أشهر فأكثر.
-        </td></tr>
-      </table>
-
-      <h4 class="sub">فضل صلاة الجماعة (4 فوائد)</h4>
-      <ol>
-        <li><b>رفعة الدرجات:</b> يرفعه الله بكل خطوة درجة.</li>
-        <li><b>محو السيئات:</b> يُحطّ عنه بكل خطوة خطيئة.</li>
-        <li><b>ثواب الصلاة الدائم:</b> يظل في صلاة ما دام في المسجد ينتظر الصلاة.</li>
-        <li><b>دعاء الملائكة:</b> تدعو له ما دام في مجلسه ("اللهم صلِّ عليه، اللهم اغفر له، اللهم ارحمه، اللهم تب عليه").</li>
-      </ol>
-      <p>وفضلها بشكل عام: تزيد على صلاة الفرد في بيته أو سوقه بضعًا وعشرين درجة.</p>
-    </div>
-  </details>
-
-  <details class="lesson">
-    <summary>٣ — الملائكة وجوهر الإيمان</summary>
-    <div class="lesson-body">
-      <p>الإيمان بالملائكة هو <b>الركن الثاني</b> من أركان الإيمان.</p>
-
-      <h4 class="sub">صفات الملائكة (4)</h4>
-      <ul>
-        <li>لهم طبيعة خاصة مختلفة عن طبيعة البشر.</li>
-        <li>خُلِقوا من نور.</li>
-        <li>لا يأكلون ولا يشربون ولا يعصون الله.</li>
-        <li>وكّلهم الله بأعمال كثيرة متنوعة.</li>
-      </ul>
-
-      <h4 class="sub">أعمال الملائكة</h4>
-      <div class="pills">
-        <span class="pill">حفظ الإنسان</span><span class="pill">تسجيل الأعمال (خيرًا وشرًا)</span>
-        <span class="pill">الصلاة على المؤمنين والاستغفار لهم</span><span class="pill">حضور مجالس العلم وسماع القرآن</span>
-      </div>
-
-      <h4 class="sub">سجود الملائكة لآدم</h4>
-      <p>أمر الله الملائكة بالسجود لآدم (سجود تكريم وتحية، وليس عبادة) فسجدوا جميعًا إلا إبليس. وسؤال الملائكة عن الحكمة من خلق آدم كان <b>للاستفسار لا للاعتراض</b>.</p>
-
-      <h4 class="sub">الملائكة تحفظ الإنسان وأعماله</h4>
-      <ul>
-        <li><b>المعقبات:</b> ملائكة يتعاقبون على العبد يحرسونه بأمر الله.</li>
-        <li><b>الكرام الكاتبون:</b> ملائكة يحفظون الأعمال — "رقيب" و"عتيد" (ملازمان للعبد، يكتب أحدهما الحسنات والآخر السيئات).</li>
-      </ul>
-
-      <h4 class="sub">محبة الملائكة وأعمال إضافية</h4>
-      <ul>
-        <li>الملائكة يحبون من يعبد الله ويُخلص له، ويصلون عليهم ويدعون لهم.</li>
-        <li>يشهدون مجالس العلم وقراءة القرآن (تنزل عليهم السكينة وتغشاهم الرحمة).</li>
-        <li>يدعون لمن يعود المريض (يدعو له 70 ألف ملك حتى يُمسي أو يُصبح).</li>
-      </ul>
-    </div>
-  </details>
-</section>
-
-<div class="divider"><div class="ln"></div>
-  <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="50,2 61,38 98,38 68,60 79,96 50,74 21,96 32,60 2,38 39,38" stroke="#c9a227" stroke-width="3" stroke-linejoin="round"/></svg>
-<div class="ln"></div></div>
-
-<!-- ============ UNIT 3 ============ -->
-<section class="unit" id="u3">
-  <div class="unit-head"><span class="eyebrow">الوحدة الثالثة</span><h2>الابتلاء — قبول الآخر — الإمام البخاري</h2></div>
-
-  <details class="lesson">
-    <summary>١ — قضاء الابتلاء</summary>
-    <div class="lesson-body">
-      <p><b>الابتلاء:</b> اختبار الله لعبده في صبره وشكره — المظهر العملي لعلاقة العبودية بين الله والإنسان.</p>
-
-      <h4 class="sub">قسما الابتلاء</h4>
-      <table>
-        <tr><th>ابتلاء بالشر — مناط الصبر</th><th>ابتلاء بالخير — مناط الشكر</th></tr>
-        <tr><td>المحن، الكوارث، نقص الأموال والأنفس والثمرات</td><td>النعم والعطايا</td></tr>
-      </table>
-      <p><b>الصبر:</b> حمل النفس على المكروه وتوطينها على احتمال المكاره. <b>المصيبة:</b> ما يصيب العبد من ضرر في نفسه أو أهله أو ماله.</p>
-
-      <h4 class="sub">الحكمة من الابتلاء (5 حكم)</h4>
-      <ol>
-        <li>تكفير الخطايا ورفعة الدرجات.</li>
-        <li>الإعداد الحقيقي لتحمل الأمانة والمسؤولية.</li>
-        <li>التمحيص (تمييز النفوس الصالحة من الخبيثة).</li>
-        <li>إظهار آيات الله وعاقبة الظالمين.</li>
-        <li>الشوق إلى الله تعالى.</li>
-      </ol>
-      <div class="quote"><span class="tag">حديث</span>"أشد الناس بلاءً الأنبياء، ثم الأمثل فالأمثل، يُبتلى الرجل على حسب دينه" — رواه الترمذي</div>
-    </div>
-  </details>
-
-  <details class="lesson">
-    <summary>٢ — الإسلام وقبول الآخر</summary>
-    <div class="lesson-body">
-      <h4 class="sub">الأسس الأربعة لقبول الآخر</h4>
-      <div class="pills"><span class="pill">البر</span><span class="pill">العدل</span><span class="pill">الرحمة</span><span class="pill">التعايش السلمي</span></div>
-
-      <h4 class="sub">نماذج من تعامل النبي ﷺ مع غير المسلمين</h4>
-      <ul>
-        <li>كان يحضر ولائم أهل الكتاب ويواسيهم في مصائبهم.</li>
-        <li>توفي ودرعه مرهونة عند يهودي — دليل على حسن التعامل معهم.</li>
-        <li>عقد مع نصارى نجران معاهدة تؤمّن لهم حرية ممارسة شعائرهم.</li>
-        <li>استضاف وفد نصارى نجران في مسجده وتركهم يصلون فيه.</li>
-        <li>تعامل مع المنافقين رغم معرفته بحقيقتهم، ومنحهم حقوق المواطنة.</li>
-      </ul>
-
-      <div class="note"><span class="tag">وثيقة المدينة المنورة</span>عقدها النبي ﷺ مع يهود المدينة، ومنحهم حقوقًا مساوية للمسلمين في الأمن والدفاع المشترك والحريات الدينية، وأرست مبدأ التعايش والوحدة الوطنية.</div>
-
-      <h4 class="sub">نماذج التعايش: الزواج والمطعم</h4>
-      <p>أباح الإسلام الزواج من نساء أهل الكتاب وأكل طعامهم — أرقى صور التعايش والاندماج الإنساني.</p>
-
-      <h4 class="sub">شهادات مستشرقين منصفين</h4>
-      <table>
-        <tr><th>المستشرق</th><th>الشهادة</th></tr>
-        <tr><td>ول ديورانت</td><td>أهل الذمة في الدولة الأموية تمتعوا بحرية دينية لا نظير لها</td></tr>
-        <tr><td>زغريد هونكه</td><td>الإسلام سمح للمسيحيين واليهود بممارسة شعائرهم بحرية</td></tr>
-        <tr><td>غوستاف لوبون</td><td>لم تعرف الأمم فاتحين متسامحين مثل المسلمين</td></tr>
-      </table>
-
-      <h4 class="sub">الإسلام وحماية أهل الكتاب</h4>
-      <p>أحاديث تحذر من ظلم أهل الكتاب (الذمي) أو الانتقاص من حقوقهم: "من آذى ذميًا فأنا خصمه"، "من قذف ذميًا حُدّ"، "من قتل معاهدًا لم يرح رائحة الجنة"، "ألا من ظلم معاهدًا أو انتقصه حقه... فأنا حجيجه يوم القيامة".</p>
-    </div>
-  </details>
-
-  <details class="lesson">
-    <summary>٣ — الإمام البخاري</summary>
-    <div class="lesson-body">
-      <h4 class="sub">مولده ونسبه وتعليمه</h4>
-      <p>محمد بن إسماعيل بن إبراهيم بن المغيرة، وُلد 13 شوال 194هـ بمدينة <b>بخارى</b>. بدأ دراسة الحديث قبل سن 11، حج وهو ابن 16 سنة، رحل إلى مصر، وقضى 16 عامًا متنقلًا في آسيا في طلب العلم.</p>
-
-      <h4 class="sub">كتاب "التاريخ الكبير"</h4>
-      <p>صنّفه البخاري في حجته الأولى للمدينة المنورة. كتاب يتناول تراجم رجال السند، ويُعتبر مقدمة لكتابه الثاني "الجامع الصحيح".</p>
-
-      <h4 class="sub">كتاب "الجامع الصحيح"</h4>
-      <ul>
-        <li>أشهر كتب البخاري — استغرق تصنيفه وجمعه وترتيبه <b>16 عامًا</b>.</li>
-        <li>يُعد أجل كتب الإسلام وأفضلها بعد كتاب الله تعالى.</li>
-        <li>رُتّب على أبواب الفقه، في <b>97 كتابًا</b>، بدأها بـ"كتاب بدء الوحي" وختمها بـ"كتاب التوحيد".</li>
-      </ul>
-      <div class="note"><span class="tag">سبب التصنيف</span>قال إسحاق بن راهويه: "لو جمعتم كتابًا مختصرًا لصحيح سنة النبي ﷺ" — فوقع هذا القول في قلب البخاري فأخذ في جمع الكتاب.</div>
-
-      <h4 class="sub">شروط البخاري لقبول الحديث من الرواة</h4>
-      <div class="pills">
-        <span class="pill">اتصال السند</span><span class="pill">الصدق وعدم التدليس</span>
-        <span class="pill">الضبط والتحفظ</span><span class="pill">سلامة العقل وقلة الوهم</span>
-        <span class="pill">العدالة</span><span class="pill">سلامة الاعتقاد</span>
-      </div>
-
-      <h4 class="sub">أقوال العلماء فيه</h4>
-      <ul>
-        <li><b>النووي:</b> أصح الكتب بعد القرآن الكريم: الصحيحان (البخاري ومسلم)، وكتاب البخاري أصحهما وأكثرهما فوائد.</li>
-        <li><b>الذهبي:</b> جامع البخاري الصحيح أجل كتب الإسلام وأفضلها بعد كتاب الله تعالى.</li>
-      </ul>
-
-      <p><b>وفاته:</b> في آخر ليلة من رمضان عام 256هـ، بقرية خرتنك بأوزباكستان.</p>
-    </div>
-  </details>
-</section>
-
-<div class="divider"><div class="ln"></div>
-  <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="50,2 61,38 98,38 68,60 79,96 50,74 21,96 32,60 2,38 39,38" stroke="#c9a227" stroke-width="3" stroke-linejoin="round"/></svg>
-<div class="ln"></div></div>
-
-<!-- ============ UNIT 4 ============ -->
-<section class="unit" id="u4">
-  <div class="unit-head"><span class="eyebrow">الوحدة الرابعة</span><h2>الإسلام وعالم الغيب — أساليب الدعوة — تحرير العقل</h2></div>
-
-  <details class="lesson">
-    <summary>١ — الإسلام وعالم الغيب</summary>
-    <div class="lesson-body">
-      <p>أخفى الله عن الإنسان أمور الغيب وأمره بالإيمان بها، حتى يكون هناك رادع له عن الانحراف.</p>
-      <h4 class="sub">مظاهر الإيمان بالغيب</h4>
-      <div class="pills"><span class="pill">الإيمان بيوم القيامة</span><span class="pill">الحساب والجزاء</span><span class="pill">الجنة والنار</span></div>
-
-      <h4 class="sub">حرية الاختيار والجبر عند الإنسان</h4>
-      <table>
-        <tr><th>حرية الإقبال على الله</th><th>حرية التمرد والمعصية</th></tr>
-        <tr><td>يختار الإنسان عبادة الله وطاعته، استجابة للفطرة وتأثير غريزة التعبد</td><td>يخضع الإنسان للنفس والهوى والشيطان</td></tr>
-      </table>
-      <div class="note"><span class="tag">⚠ خَلِّ بالك</span><b>العبودية لله = حرية حقيقية</b> (تصدر عن عقل وقلب المؤمن بلا إكراه). أما العبودية لغير الله فهي استعباد قائم على الجبر، تؤدي لحياة مليئة بالقلق والاكتئاب.</div>
-
-      <h4 class="sub">عدل الله في الحساب</h4>
-      <table>
-        <tr><th>وجه العدل</th><th>الشرح</th></tr>
-        <tr><td>ثواب المؤمن الصالح</td><td>يُجزى بالنعيم الذي لا عين رأت ولا أذن سمعت</td></tr>
-        <tr><td>عقاب المسيء</td><td>يُحاسَب على ما اقترف من إثم وإن كان موحِّدًا</td></tr>
-        <tr><td>الدقة في الحساب</td><td>يزن الله الأعمال بدقة شديدة، حتى مثقال ذرة</td></tr>
-      </table>
-
-      <h4 class="sub">مشهد يوم القيامة وحقائق البعث</h4>
-      <ul>
-        <li>تتحدث الأرض عن أعمال الإنسان (إذا زلزلت).</li>
-        <li>الناس يرون نتائج أعمالهم صالحة أو طالحة.</li>
-        <li>لا عبث في الخلق — الله يبدأ الخلق ويعيده وهو أهون عليه.</li>
-        <li>الرد على المتعجبين من إعادة الخلق بعد أن صاروا ترابًا.</li>
-      </ul>
-
-      <h4 class="sub">علم الغيب</h4>
-      <table>
-        <tr><th>الحقيقة</th><th>الدليل / الحكم</th></tr>
-        <tr><td>الغيب لا يعلمه إلا الله</td><td>"قل لا يعلم من في السماوات والأرض الغيب إلا الله"</td></tr>
-        <tr><td>الرسل قد يطلعون على بعض الغيب بإذن الله</td><td>"عالم الغيب فلا يُظهر على غيبه أحدًا إلا من ارتضى من رسول"</td></tr>
-        <tr><td>يحرم سؤال المنجمين وتصديقهم</td><td>من أتاهم وسألهم لم تُقبل له صلاة 40 ليلة</td></tr>
-        <tr><td>تصديق الكاهن أو العرّاف كفر</td><td>"فقد كفر بما أُنزل على محمد ﷺ"</td></tr>
-      </table>
-
-      <h4 class="sub">التنجيم المحرَّم (ادعاء علم الغيب)</h4>
-      <ul>
-        <li>يحرم سؤال المنجمين الذين يدّعون علمًا ونظريات في التنجيم، أو التواصل معهم عبر الإنترنت والفضائيات.</li>
-        <li>علاقته بالسحر: التنجيم شعبة من السحر، والسحر من كبائر الذنوب.</li>
-        <li>صوره في الإعلام: زوايا "أنت والنجوم"، "حظك هذا الأسبوع" — تصديقها يجعل الشخص مؤمنًا بالكواكب كافرًا بربها.</li>
-      </ul>
-
-      <h4 class="sub">أنواع علم النجوم</h4>
-      <table>
-        <tr><th>النوع</th><th>التفصيل</th><th>الحكم</th></tr>
-        <tr><td>بالمشاهدة</td><td>معرفة أوقات الصلاة والاتجاهات</td><td>جائز</td></tr>
-        <tr><td>بالحساب الفلكي</td><td>معرفة الخسوف والكسوف بحساب سير الشمس والقمر</td><td>جائز</td></tr>
-        <tr><td>بالعادات</td><td>معرفة مواسم الزراعة</td><td>جائز</td></tr>
-        <tr><td>بالربط بين الظواهر الطبيعية</td><td>توقع المطر بناءً على نوع السحاب</td><td>جائز</td></tr>
-      </table>
-    </div>
-  </details>
-
-  <details class="lesson">
-    <summary>٢ — أساليب الرسول ﷺ في الدعوة</summary>
-    <div class="lesson-body">
-      <ol>
-        <li><b>مراعاة الظروف البيئية وأحوال المدعوين:</b> بدأ ﷺ بالدعوة الفردية السرية بمكة، يختار من يثق بعقلهم وصدقهم.</li>
-        <li><b>مراعاة المصالح والمفاسد:</b> عند تعذيب المشركين للمسلمين، لم يأمرهم بالمواجهة بل بالصبر اتقاءً لمفسدة أكبر.</li>
-        <li><b>الحرص على هداية المدعوين:</b> كاد ﷺ يُهلك نفسه حزنًا على إعراض قومه ("فلعلك باخع نفسك").</li>
-        <li><b>الأخذ بالأسباب:</b> لبس درعين يوم أحد، والبحث عن نصير ومعين (قصة عرضه نفسه على القبائل، وموقف أبي سفيان).</li>
-        <li><b>عدم المداهنة في الحق:</b> رفض ﷺ بقوة عرض المشركين بالتنازل عن بعض الدين — "قل يا أيها الكافرون... لكم دينكم ولي دين".</li>
-      </ol>
-    </div>
-  </details>
-
-  <details class="lesson">
-    <summary>٣ — الرد على شبهة "انتشار الإسلام بحد السيف"</summary>
-    <div class="lesson-body">
-      <p><b>الشبهة:</b> ادّعاء أن الإسلام انتشر بالإكراه والقوة.</p>
-      <h4 class="sub">الرد (3 أوجه)</h4>
-      <ol>
-        <li>الحقيقة أن الإسلام لا يُكره أحدًا على اعتناقه — "لا إكراه في الدين".</li>
-        <li>شهادة أبي سفيان (قائد قريش وحارب النبي ﷺ طويلًا) بعد إسلامه: "لقد حاربتك فنعم المحارب كنت، ثم سالمتني فنعم المسالم أنت".</li>
-        <li>إثبات التاريخ: المسلمون اعتنقوا الإسلام عن قناعة تامة، ولم يُجبَر أحد على إسلامه، وانتشر الإسلام في بلدان عديدة بفضل دعوته السامية ومعاملته الحسنة.</li>
-      </ol>
-    </div>
-  </details>
-
-  <details class="lesson">
-    <summary>٤ — الإسلام وتحرير العقل</summary>
-    <div class="lesson-body">
-      <p>حمّل الله الإنسان مسؤولية عقله. ألفاظ القرآن عن العقل ومجالاته: <b>الفكر، النظر، التدبر، الذكر، الاعتبار</b>.</p>
-
-      <h4 class="sub">شواهد تقدير الإسلام للعقل</h4>
-      <ul>
-        <li><b>حماية العقل من مقاصد الشريعة الخمسة:</b> الدين، النفس، النسل، العقل، المال — وحرّم الاعتداء عليه وفرض عقوبات.</li>
-        <li><b>فتح باب الاجتهاد العقلي:</b> التفكير، التدبر، النظر، القياس، الاستحسان، سد الذرائع.</li>
-        <li><b>العقل مناط التكليف:</b> حديث "رفع القلم عن ثلاثة: عن النائم حتى يستيقظ، وعن الصبي حتى يحتلم، وعن المجنون حتى يعقل".</li>
-      </ul>
-
-      <h4 class="sub">الإسلام دين الوسطية والاعتدال</h4>
-      <div class="quote"><span class="tag">قرآن</span>"وكذلك جعلناكم أمة وسطًا لتكونوا شهداء على الناس"</div>
-      <div class="quote"><span class="tag">حديث</span>"إن الدين يُسر، ولن يُشادّ الدين أحد إلا غلبه، فسددوا وقاربوا وأبشروا" — رواه البخاري</div>
-
-      <p><b>مجالات الوسطية:</b></p>
-      <div class="pills"><span class="pill">التصور</span><span class="pill">الاعتقاد</span><span class="pill">التشريع</span><span class="pill">التعبد</span><span class="pill">الأخلاق</span><span class="pill">السلوك</span></div>
-
-      <table>
-        <tr><th>مجال التوازن</th><th>الدليل / المعنى</th></tr>
-        <tr><td>الاعتدال في العبادة</td><td>"عليكم من الأعمال ما تطيقون، فإن الله لا يمل حتى تملوا"</td></tr>
-        <tr><td>التوازن بين الدنيا والآخرة</td><td>"ليس بخيركم من ترك دنياه لآخرته، ولا آخرته لدنياه، حتى يصيب منهما جميعًا"</td></tr>
-        <tr><td>التوازن بين الروح والجسد</td><td>"وابتغ فيما آتاك الله الدار الآخرة ولا تنس نصيبك من الدنيا"</td></tr>
-      </table>
-
-      <h4 class="sub">الإسلام يرفض العنف والتطرف والإرهاب</h4>
-      <div class="quote"><span class="tag">حديث (وصايا النبي ﷺ للجيوش)</span>"اخرجوا باسم الله، قاتلوا في سبيل الله، لا تغدروا، ولا تغلوا، ولا تمثّلوا، ولا تقتلوا الولدان، ولا أصحاب الصوامع" — رواه مسلم</div>
-      <p>قيم مستفادة: تحريم الغدر، تحريم قتل الأطفال، تحريم المثلة، تحريم الغلول (الخيانة في الغنيمة)، استحباب وصية القائد لجنده.</p>
-      <p>كما أوصى أبو بكر الصديق أسامة بن زيد بعدم قتل النساء والشيوخ، وعدم حرق الزرع أو قطع الشجر المثمر، وترك أصحاب الصوامع. وعند فتح مكة قال لأهلها: "اذهبوا فأنتم الطلقاء".</p>
-    </div>
-  </details>
-</section>
-
-<div class="divider"><div class="ln"></div>
-  <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="50,2 61,38 98,38 68,60 79,96 50,74 21,96 32,60 2,38 39,38" stroke="#c9a227" stroke-width="3" stroke-linejoin="round"/></svg>
-<div class="ln"></div></div>
-
-<!-- ============ UNIT 5 ============ -->
-<section class="unit" id="u5">
-  <div class="unit-head"><span class="eyebrow">الوحدة الخامسة</span><h2>الإسلام وفقه التكافل — الميراث — الزكاة</h2></div>
-
-  <details class="lesson">
-    <summary>١ — الإسلام وفقه التكافل</summary>
-    <div class="lesson-body">
-      <p>التكافل في القرآن يقوم على: <b>1)</b> مبدأ الأخوة (حجر الأساس للعلاقات الاجتماعية) و<b>2)</b> صفاء نفس المؤمن وحبه الخير للجميع دون بخل.</p>
-      <p>"فمن يعمل مثقال ذرة خيرًا يره" — كل عمل خير ولو ذرة له وزن وقيمة عند الله.</p>
-
-      <h4 class="sub">صور التكافل (أهم الجوانب)</h4>
-      <table>
-        <tr><th>الجانب</th><th>صورة التكافل</th></tr>
-        <tr><td>العلمي</td><td>بذل العلم ونشره (قصة يوسف)</td></tr>
-        <tr><td>الأخلاقي</td><td>حماية الأخلاق العامة، الأمر بالمعروف والنهي عن المنكر</td></tr>
-        <tr><td>الجنائي</td><td>القصاص والحدود — حفظ الأمن ("ولكم في القصاص حياة")</td></tr>
-        <tr><td>السياسي</td><td>الشورى والنصيحة (قصة ذي القرنين)</td></tr>
-        <tr><td>الاقتصادي</td><td>منع كنز المال، إنفاقه في الخير</td></tr>
-        <tr><td>الأدبي</td><td>رعاية مشاعر الآخرين، تحريم السخرية</td></tr>
-        <tr><td>الأسري</td><td>النفقة والتربية والتعليم وحق الزوجة والأبناء ("كلكم راعٍ")</td></tr>
-        <tr><td>مع الأقارب</td><td>صلة الرحم، المساعدة المادية والمعنوية</td></tr>
-        <tr><td>كفالة اليتيم</td><td>حفظ المال، التعليم، الرعاية النفسية ("فأما اليتيم فلا تقهر")</td></tr>
-        <tr><td>كفالة الفقراء</td><td>الزكاة والإحسان وتوفير الحاجات</td></tr>
-        <tr><td>رعاية كبار السن</td><td>النفقة وحسن المعاملة والعناية بالوالدين</td></tr>
-        <tr><td>كفالة اللقطاء</td><td>الرعاية الاجتماعية والإنسانية ("ومن أحياها فكأنما أحيا الناس جميعًا")</td></tr>
-        <tr><td>ذوي الاحتياجات</td><td>تأهيل، دمج، تعليم</td></tr>
-        <tr><td>العمل التطوعي</td><td>بذل الوقت والجهد لخدمة المجتمع</td></tr>
-      </table>
-    </div>
-  </details>
-
-  <details class="lesson">
-    <summary>٢ — التكافل في الميراث</summary>
-    <div class="lesson-body">
-      <h4 class="sub">مبادئ نظام الميراث</h4>
-      <table>
-        <tr><th>المبدأ</th><th>الشرح</th></tr>
-        <tr><td>حق الإنسان في التملّك</td><td>ما يتركه الميت ملك لورثته بحق شرعي مفروض من الله</td></tr>
-        <tr><td>أولوية الأقارب</td><td>الأقرب إلى الميت أحق الناس به عاطفيًا وإنسانيًا</td></tr>
-        <tr><td>منع احتكار الثروة</td><td>يوزّع الثروة بعد الوفاة، يمنع تركزها في يد فئة قليلة</td></tr>
-        <tr><td>ارتباط الميراث بالنفقة</td><td>تنتقل واجبات المتوفى المالية لمن يرثه ("وعلى الوارث مثل ذلك")</td></tr>
-        <tr><td>نصيب النساء مفروض كالرجال</td><td>غالبًا لا تتساوى الأنصبة — ليس ظلمًا، بل لأن: 1) الرجل مكلف بالإنفاق على الأسرة والمهر والسكن 2) المرأة غير مكلفة بل يجب الإنفاق عليها</td></tr>
-        <tr><td>التصدق على اليتامى والمساكين</td><td>عند قسمة التركة، إن حضر من لا يرث يُعطى منها</td></tr>
-      </table>
-
-      <div class="note"><span class="tag">⚠ خَلِّ بالك — حالات تساوي الذكر والأنثى</span>
+      <div class="card">
+        <h4>مبادئ الأخلاق</h4>
         <ul>
-          <li><b>ميراث الأبوين مع وجود الولد:</b> السدس للأب والسدس للأم (يتساوى نصيبهما).</li>
-          <li><b>ميراث الكلالة للإخوة من الأم</b> (الكلالة = من مات وليس له ولد ولا والد ولا جد): يشتركون بالتساوي سواء ذكورًا أو إناثًا.</li>
+          <li>تنظم العلاقة بين الفرد ونفسه وعلاقته بغيره</li>
+          <li>تهتم بالنوايا</li>
+          <li>تسمو بالإنسان للكمال والرفعة، وتقتصر على الجزاء المعنوي</li>
         </ul>
       </div>
-
-      <h4 class="sub">أهداف نظام الميراث</h4>
-      <div class="pills">
-        <span class="pill">تحقيق العدالة في اقتسام المال</span>
-        <span class="pill">حفظ حقوق النساء والأولاد والفئات الضعيفة</span>
-        <span class="pill">منع الاحتكار وتحفيز الإنتاج</span>
-        <span class="pill">الوفاء بالمسؤوليات الأسرية المترتبة على الورثة</span>
+      <div class="card">
+        <h4>تعاليم الدين</h4>
+        <ul>
+          <li>تشمل واجبات الفرد وغيره نحو خالقه</li>
+          <li>يتمثل فيها عقاب الإنسان في الدنيا والآخرة</li>
+          <li>مرنة تتوافق مع كل زمان ومكان</li>
+        </ul>
       </div>
     </div>
-  </details>
+  </div>
 
-  <details class="lesson">
-    <summary>٣ — سماحة الإسلام في احتساب الزكاة</summary>
-    <div class="lesson-body">
-      <p>الزكاة: تشريع مالي منظِّم لتحقيق تكافل اجتماعي، هدفها الكفاية في الحاجات الضرورية — وهي <b>ركن الإسلام الثالث</b> بعد الشهادتين والصلاة.</p>
+  <div class="topic">
+    <h3>رابعًا: الدستور <span style="font-size:13px;color:var(--ink-soft);">(قمة البناء القانوني)</span></h3>
+    <div class="lead">مجموعة من القواعد التي تحدد <b>شكل الدولة</b> وقواعد الحكم فيها، وتحدد <b>حقوق الأفراد</b>، وتنظم سلطاتها العامة مع بيان اختصاصات هذه السلطات.</div>
 
-      <h4 class="sub">أساس العقد والأخذ</h4>
-      <table>
-        <tr><th>الأساس العقدي</th><th>الأساس الأخلاقي</th></tr>
-        <tr><td>المال في يد الأغنياء وديعة عند الله، استخلفهم في حفظه وإدارته وتوزيعه</td><td>مبدأ التكافل الاجتماعي — لا يستقل الأغنياء بأموالهم ويهملون الفقراء</td></tr>
-      </table>
-
-      <h4 class="sub">الجانب المعنوي للزكاة</h4>
-      <div class="pills">
-        <span class="pill">حفظ العلاقات الأسرية</span><span class="pill">تحقيق التعاون والتواصل</span>
-        <span class="pill">حل مشكلة المشردين</span><span class="pill">بناء الموارد البشرية</span>
-        <span class="pill">حل مشكلة العزوبة</span><span class="pill">تشجيع الاستثمار</span>
-        <span class="pill">عون للعاجزين</span><span class="pill">دعم الجهاد</span>
-        <span class="pill">تنمية الروح الاجتماعية</span><span class="pill">نشر الدعوة</span>
+    <div class="compare">
+      <div>
+        <h5>من حيث التدوين</h5>
+        <ul>
+          <li><b>مدوّنة:</b> قواعد دستورية مسجّلة في وثيقة رسمية صادرة من السلطات المختصة (أول الدساتير العصرية المدوّنة: الدستور الأمريكي)</li>
+          <li><b>غير مدوّنة:</b> قواعد عرفية استمر العمل بها حتى أصبحت قوانين ملزمة (مثل: الدستور الإنجليزي)</li>
+        </ul>
       </div>
-
-      <h4 class="sub">مصارف الزكاة الثمانية</h4>
-      <table>
-        <tr><th>المصرف</th><th>الشرح</th></tr>
-        <tr><td>الفقراء</td><td>من لا يملك ما يكفيه لحاجته الأساسية</td></tr>
-        <tr><td>المساكين</td><td>يملكون بعض المال لكنه لا يكفيهم</td></tr>
-        <tr><td>العاملون عليها</td><td>موظفو جمع الزكاة وتوزيعها، يُعطون أجرًا</td></tr>
-        <tr><td>المؤلفة قلوبهم</td><td>تأليفًا أو تثبيتًا لإسلامهم أو تقوية ولائهم</td></tr>
-        <tr><td>في الرقاب</td><td>لتحرير العبيد</td></tr>
-        <tr><td>الغارمون</td><td>من تحملوا ديونًا ولا يستطيعون سدادها</td></tr>
-        <tr><td>في سبيل الله</td><td>الجهاد والدعوة والإعداد للدفاع عن الإسلام</td></tr>
-        <tr><td>ابن السبيل</td><td>المسافر المنقطع عن ماله ليكفيه العودة أو إتمام السفر</td></tr>
-      </table>
-
-      <div class="note"><span class="tag">⚠ عقوبة مانع الزكاة</span>توعّد الله مانع الزكاة بالعذاب الأليم، وعدم نزول المطر، وانتشار الجوع. ("وما منع قوم زكاة أموالهم إلا منعوا القطر من السماء")</div>
+      <div>
+        <h5>من حيث طرق التعديل</h5>
+        <ul>
+          <li><b>مرنة:</b> تعدَّل بنفس إجراءات تعديل القوانين العادية (مثل: الدستور الإنجليزي)</li>
+          <li><b>جامدة:</b> يستلزم تعديلها إجراءات أشد تعقيدًا (مثل: دستور أستراليا الفيدرالي)</li>
+        </ul>
+      </div>
     </div>
-  </details>
+
+    <details class="mem">
+      <summary>أساليب نشأة الدساتير</summary>
+      <div class="body">
+        <div class="compare">
+          <div>
+            <h5>طرق ديمقراطية</h5>
+            <ul>
+              <li><b>أسلوب الجمعية التأسيسية النيابية:</b> ينتخب الشعب ممثلين لإعداد الدستور نيابة عنه، ويصبح نافذًا بمجرد الصيغة النهائية</li>
+              <li><b>أسلوب الاستفتاء الدستوري:</b> يتم عن طريق جمعية التأسيسية، ولا يصبح نافذًا إلا إذا تم الاستفتاء عليه وتمت الموافقة</li>
+            </ul>
+          </div>
+          <div>
+            <h5>طرق غير ديمقراطية</h5>
+            <ul>
+              <li><b>أسلوب المنحة:</b> دساتير يضعها الحاكم دون مشاركة الشعب</li>
+              <li><b>أسلوب التعاقد:</b> دساتير تتم باتفاق إرادة الحاكم والمحكوم، ويمثّل اعترافًا من الحاكم بمشاركة الشعب في السيادة (مثل: الدستور العراقي)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mem">
+      <summary>مراحل التعديل الدستوري</summary>
+      <div class="body">
+        <div class="chips">
+          <span class="chip">1. مرحلة اقتراح التعديل</span>
+          <span class="chip">2. مرحلة الموافقة على التعديل</span>
+          <span class="chip">3. مرحلة الإعداد</span>
+          <span class="chip">4. مرحلة القرار النهائي للتعديل</span>
+        </div>
+      </div>
+    </details>
+
+    <details class="mem">
+      <summary>مراحل الدستور المصري (تاريخيًا)</summary>
+      <div class="body">
+        <div class="timeline">
+          <div class="tl-item"><h4>1923</h4><p>أول دستور عام في مصر</p></div>
+          <div class="tl-item"><h4>1924</h4><p>أول برلمان مصري</p></div>
+          <div class="tl-item"><h4>1971</h4><p>الدستور الدائم، تعدّل بموجب قرار مجلس الشعب العام (1980)، وتم تعديله بعد ثورة يناير 2011 وبعد ثورة يونيو 2013</p></div>
+          <div class="tl-item"><h4>2014</h4><p>دستور مصر الجديد</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mem">
+      <summary>أهم محتويات الدستور المصري (6 أبواب)</summary>
+      <div class="body">
+        <div class="grid">
+          <div class="card"><h4>الباب الأول — "الدولة" (مواد 1-6)</h4>
+            <ul><li>مصر وطن خالد للمصريين</li><li>يؤمن بالديمقراطية والتداول السلمي للسلطة والمواطنة</li><li>الشعب وحده مصدر السلطات</li></ul>
+          </div>
+          <div class="card"><h4>الباب الثاني — "المقومات الأساسية للمجتمع"</h4>
+            <ul><li>الأسرة أساس المجتمع، قوامها الدين والأخلاق والوطنية</li><li>الدولة تلتزم بالعدالة الاجتماعية والتنمية المستدامة وتكافؤ الفرص</li></ul>
+          </div>
+          <div class="card"><h4>الباب الثالث — "الحقوق والحريات والواجبات العامة" (مواد 50-93)</h4>
+            <ul><li>حماية الحريات والمساواة بين المواطنين دون أي تمييز</li></ul>
+          </div>
+          <div class="card"><h4>الباب الرابع — "سيادة القانون" (مواد 94-100)</h4>
+            <ul><li>القانون هو أساس الحكم في الدولة</li><li>لا توقَع عقوبة إلا بحكم قضائي</li></ul>
+          </div>
+          <div class="card"><h4>الباب الخامس — "نظام الحكم" (مواد 101-221)</h4>
+            <ul><li>مهام السلطة التشريعية والتنفيذية والقضائية والعلاقة بينهم</li></ul>
+          </div>
+          <div class="card"><h4>الباب السادس — "الأحكام العامة والانتقالية" (مواد 222-247)</h4>
+            <ul><li>الخطوط العريضة للدولة وعاصمتها</li><li>شكل العلم المصري وطريقة تعديل الدستور</li></ul>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mem">
+      <summary>المحكمة الدستورية العليا</summary>
+      <div class="body">
+        <p><b>التعريف:</b> جهة قضائية مستقلة بذاتها، مقرها القاهرة، ويجوز انعقادها في أي مكان بالبلاد.</p>
+        <p><b>التشكيل:</b> رئيس وعدد كافٍ من النواب، وتؤلَّف هيئة المفوضين من رئيس وعدد من الرؤساء والمستشارين. تختار الجمعية العامة رئيسها من بين أقدم 3 نواب وتختار نوابها، ويصدر قرار تعيينهم من رئيس الجمهورية.</p>
+        <p><b>الاختصاصات:</b></p>
+        <ul>
+          <li>الرقابة القضائية على دستورية القوانين واللوائح</li>
+          <li>تفسير النصوص التي تثير خلافًا في التطبيق</li>
+          <li>الفصل في تنازع الاختصاص بين الجهات القضائية</li>
+          <li>الفصل في النزاع بشأن تنفيذ حكمين نهائيين متناقضين</li>
+        </ul>
+      </div>
+    </details>
+
+    <div class="note"><b>أهمية الدستور والقانون:</b> 1) تحقيق الأمن والنظام في المجتمع 2) تحقيق العدل والمساواة بين الأفراد 3) تحقيق استقرار المجتمع 4) المساهمة في تقدم وارتقاء المجتمع.</div>
+  </div>
 </section>
 
-<div class="divider"><div class="ln"></div>
-  <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="50,2 61,38 98,38 68,60 79,96 50,74 21,96 32,60 2,38 39,38" stroke="#c9a227" stroke-width="3" stroke-linejoin="round"/></svg>
-<div class="ln"></div></div>
+<!-- ============================================================ -->
+<!-- CHAPTER 2 -->
+<!-- ============================================================ -->
+<section class="chapter" id="ch2">
+  <div class="chapter-head">
+    <div class="seal" data-num="2"></div>
+    <div>
+      <span class="eyebrow">الفصل الثاني</span>
+      <h2>الديمقراطية</h2>
+    </div>
+  </div>
+  <div class="chapter-rule"></div>
 
-<!-- ============ UNIT 6 ============ -->
-<section class="unit" id="u6">
-  <div class="unit-head"><span class="eyebrow">الوحدة السادسة</span><h2>سورة النور — العفة وصيانة الأعراض</h2></div>
+  <div class="topic">
+    <h3>أولًا: تعريف الديمقراطية</h3>
+    <div class="lead">كلمة يونانية من مقطعين: <b>(الشعب + السلطة) = حكم الشعب</b>. وهي طريقة في الحكم يمارس فيها الشعب السلطة عن طريق اختياره لمن ينوب عنه (برلمانيًا أو رئاسيًا).</div>
+    <div class="note">قال <b>أرسطو</b>: "مواطن الحق هو مواطن الديمقراطية" — المواطنة هي أساس الديمقراطية. في ظل المواطنة يتمتع الفرد بجميع حقوقه السياسية، وتحقّق الديمقراطية مبدأ المواطنة الكاملة والمتساوية دون تمييز في الجنس أو الدين، ويشمل ذلك تولّي المناصب العليا.</div>
+  </div>
 
-  <details class="lesson">
-    <summary>١ — سورة النور: آداب وأحكام</summary>
-    <div class="lesson-body">
-      <div class="pills"><span class="pill">مدنية</span><span class="pill">64 آية</span><span class="pill">ترتيبها في المصحف: 24</span></div>
+  <div class="topic">
+    <h3>ثانيًا: نشأة وتطور مفهوم الديمقراطية</h3>
+    <div class="grid">
+      <div class="card"><h4>الحضارة المصرية القديمة</h4><p>أنشأ المصريون القدماء أول نظام سياسي مدني في التاريخ يقوم على الحكم المركزي، مثل وصايا "بتاح حتب" و"الفلاح الفصيح".</p></div>
+      <div class="card"><h4>حضارة العراق القديمة</h4><p>شهدت تجربة الديمقراطية البدائية، مثل: النصوص السومرية.</p></div>
+      <div class="card"><h4>الحضارة اليونانية</h4><p>ظهر أول نظام ديمقراطي في اليونان بعد تشريعات "صولون" التي ألغت نظام العبيد (الرق). ازدهرت الديمقراطية الأثينية تمامًا على يد "بريكليس" الذي وضع دستورًا بالمعنى الصحيح.</p></div>
+      <div class="card"><h4>الحضارة العربية الإسلامية</h4><p>وضع الإسلام مبدأ الشورى والمساواة والتسامح وحقوق الإنسان.</p></div>
+      <div class="card"><h4>العصر الحديث</h4><p>بدأ مع فلاسفة العقد الاجتماعي، وأن من حق المحكومين أن يسحبوا الثقة من الحاكم إذا خالف شروط العقد، والفصل بين السلطات الثلاث.</p></div>
+    </div>
+  </div>
 
-      <h4 class="sub">قصة الإفك (ملخص الآيات 11–20)</h4>
-      <ul>
-        <li>جماعة من المسلمين روّجوا كذبًا (الإفك) في حق السيدة عائشة رضي الله عنها.</li>
-        <li>عاتب الله المؤمنين لعدم حسن الظن، وبيّن وجوب وجود <b>4 شهداء</b> لإثبات التهمة، وإلا فالقاذف كاذب عند الله.</li>
-        <li>دعوة للعفو والصفح (نزلت في موقف أبي بكر تجاه مسطح بن أثاثة).</li>
-        <li>تحذير شديد من حب إشاعة الفاحشة بين الناس — لهم عذاب أليم في الدنيا والآخرة.</li>
-        <li>بيان أن من يرمون المحصنات الغافلات لُعنوا في الدنيا والآخرة، وتشهد عليهم جوارحهم يوم القيامة.</li>
-      </ul>
+  <div class="topic">
+    <h3>ثالثًا: مقومات الديمقراطية</h3>
+    <div class="grid">
+      <div class="card"><h4>حقوق الإنسان</h4><p>العلاقة بين حقوق الإنسان والديمقراطية علاقة طردية: كلما ترسّخت الديمقراطية، زاد الحرص على حقوق الإنسان.</p></div>
+      <div class="card"><h4>التعددية السياسية</h4><p>تُعتبر مصدر ثراء للديمقراطية لأنها تعزز التنوع والتعدد في الأفكار.</p></div>
+      <div class="card"><h4>العدالة الاجتماعية</h4><p>تحقيق المساواة بين المواطنين دون تمييز.</p></div>
+      <div class="card"><h4>سيادة القانون</h4><p>الجميع أمام القانون سواء، وجميع أجهزة الدولة تخضع للقانون.</p></div>
+      <div class="card"><h4>سيادة الشعب</h4><p>يشارك الشعب في الحكم وإدارة الشؤون العامة للدولة.</p></div>
+    </div>
+  </div>
 
-      <h4 class="sub">مكانة السيدة عائشة رضي الله عنها</h4>
-      <ul>
-        <li>زوج النبي ﷺ.</li>
-        <li>برّأها الله من فوق سبع سماوات.</li>
-        <li>نزول القرآن ببراءتها يُتلى إلى يوم القيامة — دلالة على رفعة منزلتها.</li>
-      </ul>
-
-      <h4 class="sub">أهمية السورة ولفظ "النور"</h4>
-      <p>كتب عمر بن الخطاب إلى أهل الكوفة: "علّموا نساءكم سورة النور".</p>
-      <p>تكرر ارتباط السورة بالنور لفظًا ومعنى — "الله نور السماوات والأرض" — كما لا يُستغنى عن النور الحسي، لا يُستغنى عن النور المعنوي (الهداية الإلهية).</p>
-
-      <h4 class="sub">أهداف ومضامين السورة</h4>
-      <div class="pills">
-        <span class="pill">حفظ الأعراض</span><span class="pill">ردع الفاحشة (الزنا وقذف الأبرياء)</span>
-        <span class="pill">تنظيم العلاقات الأسرية والاجتماعية</span><span class="pill">الاستئذان وآداب دخول البيوت</span>
-        <span class="pill">غض البصر والاستعفاف والزواج</span><span class="pill">أداء العبادات وخاصة الصلاة</span>
+  <div class="topic">
+    <h3>رابعًا: صور الديمقراطية</h3>
+    <div class="grid">
+      <div class="card">
+        <h4>الديمقراطية المباشرة</h4>
+        <p>الشعب يحكم مباشرة دون وساطة، وكانت موجودة قديمًا لقلة عدد السكان مثل اليونان قديمًا.</p>
+      </div>
+      <div class="card">
+        <h4>الديمقراطية غير المباشرة (النيابية)</h4>
+        <p>الشعب يحكم من خلال النواب في البرلمان، يضعون القوانين ويراقبون الحكومة، من خلال صورتين:</p>
+        <ul><li>النظام البرلماني (مثل: الهند)</li><li>النظام الرئاسي (مثل: أمريكا)</li></ul>
+      </div>
+      <div class="card">
+        <h4>الديمقراطية شبه المباشرة</h4>
+        <p>نظام وسط بين المباشرة والتمثيلية، للشعب الحق في مشاركة البرلمان في السلطة ومراقبته. شائع في دول عربية وأوروبية صغيرة مثل النمسا وسويسرا.</p>
       </div>
     </div>
-  </details>
+  </div>
 
-  <details class="lesson">
-    <summary>٢ — قصص الأنبياء في تحقيق العفة</summary>
-    <div class="lesson-body">
-      <p>الأنبياء صفوة الخلق، يتميزون بـ: طهارة القلب، عفة النفس، سلامة الجوارح، استقامة السلوك، الاتصال الدائم بالله.</p>
-
-      <h4 class="sub">يوسف بن يعقوب عليه السلام</h4>
-      <table>
-        <tr><td>النسب</td><td>يوسف بن يعقوب بن إسحاق بن إبراهيم عليهم السلام</td></tr>
-        <tr><td>مكانته</td><td>الحلقة الرابعة في السلسلة النبوية المتصلة بإبراهيم عليه السلام — مثال يُحتذى في تحقيق العفة وقوة الإرادة</td></tr>
-        <tr><td>المحنة</td><td>مراودة امرأة العزيز له عن نفسه رغم توفر كل دواعي الوقوع في الفاحشة</td></tr>
-        <tr><td>عوامل النجاة</td><td>1) مراقبة الله والإيمان 2) استحضار سوء عاقبة المعصية 3) الوفاء لمن أحسن إليه (زوجها) 4) مقام الإحسان والرؤية القلبية لله</td></tr>
-        <tr><td>النتيجة</td><td>العصمة من الفاحشة والرفعة في الدنيا والآخرة</td></tr>
-      </table>
-
-      <h4 class="sub">موسى بن عمران عليه السلام</h4>
-      <table>
-        <tr><td>النسب</td><td>موسى بن عمران بن قاهث بن لاوي بن يعقوب عليه السلام</td></tr>
-        <tr><td>موقفه مع المرأتين</td><td>سقى لهما دون انتظار أجر، رغم أنه غريب وعزيز نفسٍ في بلد غير بلده</td></tr>
-        <tr><td>مظاهر العفة والتواضع</td><td>1) الحرص على غض البصر رغم أنهما وحدهما في الصحراء 2) لما دعته الفتاة لمقابلة أبيها، لم يتقدم لها تجنبًا للنظر إليها</td></tr>
-        <tr><td>النتيجة</td><td>استجابة الدعاء، والزواج من إحدى الفتاتين — اصطفاء إلهي</td></tr>
-      </table>
-
-      <h4 class="sub">الدروس المستفادة</h4>
-      <ol>
-        <li>الرجولة الحقيقية تظهر في مواطن العفة والشهامة.</li>
-        <li>الجزاء من جنس العمل (لما تعفف موسى، جعله الله محل ثقة وأمانة).</li>
-        <li>طلب العون من الله ينجي من الفتن ويجلب الخير.</li>
-        <li>العفة ليست ضعفًا بل قوة إرادة وعزة نفس.</li>
-      </ol>
+  <div class="topic">
+    <h3>خامسًا: تحديات تحقيق الديمقراطية</h3>
+    <div class="grid">
+      <div class="card"><h4>الأمية</h4><p>تؤدي إلى الجهل وعدم وعي الفرد بحقوقه وواجباته.</p></div>
+      <div class="card"><h4>الفقر</h4><p>يؤثر في مسيرة الديمقراطية؛ ضعف الفرد في تلبية احتياجاته الرئيسية يجعل تركيزه على البحث عن مصادر الدخل.</p></div>
+      <div class="card"><h4>التعصب الفكري</h4><p>التحيز الشديد لرأي معين ورفض الآراء الأخرى، مثل التعصب الديني.</p></div>
+      <div class="card"><h4>ضعف دور المجتمع المدني</h4><p>مثل عدم وجود جمعيات ونقابات غير حكومية تمارس أنشطة حقيقية داخل المجتمع.</p></div>
     </div>
-  </details>
+  </div>
+</section>
 
-  <details class="lesson">
-    <summary>٣ — صيانة الأعراض في الإسلام</summary>
-    <div class="lesson-body">
-      <p>جعل الإسلام الحفاظ على الأعراض أحد مقاصده العامة.</p>
-
-      <h4 class="sub">أحكام صيانة الأعراض</h4>
-      <ul>
-        <li>وضع أدب الاستئذان، وأمر بغض البصر، وحذّر من اتهام الآخرين دون بيّنة.</li>
-        <li>وجّه للارتباط بين الطيبين والطيبات في الزواج.</li>
-      </ul>
-
-      <h4 class="sub">أحكام تشريعية زاجرة</h4>
-      <div class="pills"><span class="pill">عقوبة قذف المحصنات (اتهام العفيفات بالباطل)</span><span class="pill">عقوبة الزنا</span></div>
-
-      <h4 class="sub">التدابير الوقائية لصيانة الأعراض</h4>
-      <table>
-        <tr><th>التدبير</th><th>الدليل / المعنى</th></tr>
-        <tr><td>الابتعاد عن الشبهات</td><td>"إن الشيطان يجري من ابن آدم مجرى الدم"</td></tr>
-        <tr><td>غض البصر</td><td>"قل للمؤمنين يغضوا من أبصارهم"</td></tr>
-        <tr><td>عدم الخلوة بالمرأة</td><td>"إياكم والدخول على النساء" — الحمو الموت</td></tr>
-        <tr><td>الاستئذان عند دخول البيوت</td><td>"لا تدخلوا بيوتًا غير بيوتكم حتى تستأنسوا وتسلموا"</td></tr>
-        <tr><td>معرفة خطورة أمر الأعراض</td><td>"وتحسبونه هينًا وهو عند الله عظيم"</td></tr>
-        <tr><td>تقليل الحديث عن الأعراض</td><td>لم يكرر القرآن قصة يوسف ولا حادثة الإفك إلا مرة واحدة لكل منهما</td></tr>
-        <tr><td>تقديم حسن الظن</td><td>"لولا إذ سمعتموه ظن المؤمنون والمؤمنات بأنفسهم خيرًا"</td></tr>
-      </table>
-
-      <h4 class="sub">توجيهات خُلقية ختامية</h4>
-      <ol>
-        <li>تزكية النفس والاستعلاء بها — "ولولا فضل الله عليكم ورحمته ما زكى منكم من أحد أبدًا".</li>
-        <li>الاختيار الصحيح في الزواج — "والطيبات للطيبين والطيبون للطيبات".</li>
-      </ol>
+<!-- ============================================================ -->
+<!-- CHAPTER 3 -->
+<!-- ============================================================ -->
+<section class="chapter" id="ch3">
+  <div class="chapter-head">
+    <div class="seal" data-num="3"></div>
+    <div>
+      <span class="eyebrow">الفصل الثالث</span>
+      <h2>الأحزاب السياسية</h2>
     </div>
-  </details>
+  </div>
+  <div class="chapter-rule"></div>
+
+  <div class="topic">
+    <h3>مفهوم الحزب السياسي</h3>
+    <div class="lead">هو كل مجموعة منظمة <b>طبقًا لأحكام القانون</b>، وتقوم على مبادئ وأهداف مشتركة.</div>
+  </div>
+
+  <div class="topic">
+    <h3>شروط تأسيس الحزب السياسي</h3>
+    <div class="grid">
+      <div class="card"><p>1. ألا يتشابه اسم الحزب مع حزب قائم</p></div>
+      <div class="card"><p>2. أن يكون له برامج واضحة</p></div>
+      <div class="card"><p>3. ألا تتعارض مبادئه مع الدستور والوحدة الوطنية</p></div>
+      <div class="card"><p>4. ألا يقوم على أساس ديني أو طبقي أو طائفي</p></div>
+      <div class="card"><p>5. ألا يكون له تشكيلات عسكرية</p></div>
+      <div class="card"><p>6. ألا يكون فرعًا لحزب أو تنظيم سياسي أجنبي</p></div>
+      <div class="card"><p>7. علانية مبادئ الحزب وأهدافه ومصادر تمويله</p></div>
+    </div>
+  </div>
+
+  <div class="topic">
+    <h3>خصائص الأحزاب السياسية</h3>
+    <div class="grid">
+      <div class="card"><h4>الاستمرارية</h4><p>يجب أن يستمر الحزب بممارسته ودوره السياسي.</p></div>
+      <div class="card"><h4>الانتشار</h4><p>يتم تنظيمه من القمة إلى القاعدة، يغطي كافة جوانب الوطن.</p></div>
+      <div class="card"><h4>الرؤية السياسية</h4><p>يتبنى رؤية واضحة وشاملة تتفق مع أهدافه.</p></div>
+      <div class="card"><h4>الدعم الشعبي</h4><p>يسعى كل حزب لنيل التأييد الشعبي خاصة في أوقات الانتخابات والتصويت.</p></div>
+      <div class="card"><h4>السعي إلى السلطة</h4><p>يسعى كل حزب إلى السلطة لتحقيق برنامجه الانتخابي.</p></div>
+    </div>
+  </div>
+
+  <div class="topic">
+    <h3>مبادئ الأحزاب السياسية</h3>
+    <div class="grid">
+      <div class="card"><h4>تداول السلطة</h4><p>الإيمان بتداول السلطة حسب رغبة الشعب.</p></div>
+      <div class="card"><h4>التنافس</h4><p>التنافس الشريف على تقديم حلول لمشكلات المجتمع، وتعرض البرامج حلولًا أمام الناخب لمشاكل داخلية وخارجية.</p></div>
+      <div class="card"><h4>التسامح وقبول الآخر</h4><p>من حيث قبول الأحزاب المعارضة، ويتولى الحكم للأغلبية.</p></div>
+    </div>
+  </div>
+
+  <div class="topic">
+    <h3>وظائف الأحزاب السياسية</h3>
+    <div class="chips">
+      <span class="chip">1. المراقبة والمحاسبة للحكومة</span>
+      <span class="chip">2. توعية المواطنين بمشكلات مجتمعهم وسبل حلها</span>
+      <span class="chip">3. تنمية وعي المواطنين السياسي بالمرشحين وبرامجهم</span>
+      <span class="chip">4. تدعيم الديمقراطية والاتجاه نحو الإصلاح السياسي</span>
+      <span class="chip">5. تحقيق التنمية من خلال تعاون الأحزاب مع المجتمع المدني</span>
+    </div>
+    <div class="note"><b>أهداف الأحزاب أيضًا تشمل:</b> المحافظة على حقوق الإنسان، دعم المواطنة، دعم الديمقراطية، الحرص على العدالة الاجتماعية، المساهمة في التنمية الاقتصادية، وتحقيق السلام الإقليمي والعالمي.</div>
+  </div>
+
+  <div class="topic">
+    <h3>نشأة وتطور الأحزاب السياسية في مصر</h3>
+    <div class="timeline">
+      <div class="tl-item">
+        <span class="tag">ما قبل ثورة 1919</span>
+        <h4>تأسيس أول الأحزاب</h4>
+        <ul><li>تكوين حزب الأمة بزعامة أحمد لطفي السيد</li><li>تكوين الحزب الوطني بزعامة مصطفى كامل</li></ul>
+      </div>
+      <div class="tl-item">
+        <span class="tag">من 1919 إلى 1952</span>
+        <h4>مرحلة التعددية الحزبية الأولى</h4>
+        <ul><li>ساد احترام الحقوق والحريات بعد دستور 1923</li><li>تولّى حزب الوفد السلطة</li></ul>
+      </div>
+      <div class="tl-item">
+        <span class="tag">من 1952 إلى 1976</span>
+        <h4>مرحلة التنظيم السياسي الموحد</h4>
+        <ul><li>قامت ثورة 1952 بحل الأحزاب ومنع إنشاء أحزاب أخرى</li></ul>
+      </div>
+      <div class="tl-item">
+        <span class="tag">من 1977 حتى ثورة يناير 2011</span>
+        <h4>مرحلة التعددية الحزبية الثانية</h4>
+        <ul><li>بدأت بقرار الرئيس السادات بإنشاء الاتحاد الجمركي المصري</li></ul>
+      </div>
+      <div class="tl-item">
+        <span class="tag">ما بعد ثورتي 25 يناير 2011 و30 يونيو 2013</span>
+        <h4>مرحلة جديدة</h4>
+        <ul><li>تأسيس الأحزاب السياسية بهدف الحفاظ على مكتسبات الثورة</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CHAPTER 4 -->
+<!-- ============================================================ -->
+<section class="chapter" id="ch4">
+  <div class="chapter-head">
+    <div class="seal" data-num="4"></div>
+    <div>
+      <span class="eyebrow">الفصل الرابع</span>
+      <h2>المشاركة السياسية — أساس الممارسة الديمقراطية</h2>
+    </div>
+  </div>
+  <div class="chapter-rule"></div>
+
+  <div class="topic">
+    <h3>أولًا: مفهوم المشاركة السياسية</h3>
+    <div class="lead">هي مجموعة من <b>الأنشطة الإيجابية المشروعة</b> يقوم بها المواطنون بهدف التأثير في عملية صنع القرار السياسي.</div>
+  </div>
+
+  <div class="topic">
+    <h3>خصائص المشاركة السياسية</h3>
+    <div class="grid">
+      <div class="card"><h4>أفعال نافعة</h4><p>تعود بالنفع على الفرد والمجتمع.</p></div>
+      <div class="card"><h4>اجتماعية شعبية</h4><p>تحتاج الشعب في توجيه مطالب للقيادة السياسية.</p></div>
+      <div class="card"><h4>شاملة متكاملة</h4><p>لجميع مجالات الحياة.</p></div>
+      <div class="card"><h4>حق وواجب وطني</h4><p>لكل فرد في المجتمع.</p></div>
+      <div class="card"><h4>إدارية</h4><p>نتيجة الشعور بالمسؤولية تجاه الوطن.</p></div>
+      <div class="card"><h4>مكتسبة</h4><p>مشاركة الأفراد مع مؤسسات الدولة.</p></div>
+    </div>
+  </div>
+
+  <div class="topic">
+    <h3>صور المشاركة السياسية</h3>
+    <div class="grid">
+      <div class="card"><h4>الممارسون لنشاط سياسي</h4><p>هم الأعضاء في الأحزاب السياسية والاتحادات المهنية والنقابية، يترشحون في الانتخابات.</p></div>
+      <div class="card"><h4>المهتمون بالنشاط السياسي</h4><p>هم المصوّتون في الانتخابات، يتابعون كل ما يحدث على الساحة السياسية.</p></div>
+      <div class="card"><h4>المحتجون عن النشاط السياسي</h4><p>هم الممتنعون عن المشاركة في الحياة السياسية بأي شكل.</p></div>
+    </div>
+  </div>
+
+  <div class="topic">
+    <h3>دوافع المشاركة السياسية</h3>
+    <div class="grid">
+      <div class="card"><h4>دوافع نفسية</h4><p>يسعى الفرد لإثبات ذاته كإنسان حر، وأنه قادر على اتخاذ القرار.</p></div>
+      <div class="card"><h4>دوافع اجتماعية</h4><p>يقوم بها لإشباع حاجاته الاجتماعية، مثل الصحة والتعليم.</p></div>
+      <div class="card"><h4>دوافع سياسية</h4><p>حيث أن المشاركة السياسية واجب وطني.</p></div>
+    </div>
+  </div>
+
+  <div class="topic">
+    <h3>آليات تفعيل المشاركة السياسية</h3>
+    <div class="grid">
+      <div class="card"><h4>الأحزاب السياسية</h4><ul><li>تدريب المواطنين على العمل السياسي</li><li>تقدّم الفرص للمرشحين لتولّي وظائف نيابية وإدارية</li></ul></div>
+      <div class="card"><h4>المجتمع المدني</h4><ul><li>دعم المشاركة السياسية من خلال التوعية</li><li>نشر ثقافة المشاركة في الانتخابات</li></ul></div>
+      <div class="card"><h4>وسائل الإعلام</h4><ul><li>إقناع المواطنين بالتخلي عن السلبية من خلال ما تعرضه</li><li>التوعية بضرورة المشاركة السياسية</li></ul></div>
+      <div class="card"><h4>مواقع التواصل الاجتماعي</h4><ul><li>توفير معلومات تساعد على الوعي السياسي</li><li>ساهمت في ترابط الأفراد والمجتمعات</li></ul></div>
+    </div>
+    <div class="note"><b>الدستور والمشاركة السياسية:</b> تُعدّ حقًا من حقوق الأفراد التي كفلها الدستور وربطها بالحقوق الأخرى، مثل: الحق في التجمع السلمي، حرية الرأي والصحافة، تكوين الأحزاب.</div>
+  </div>
+
+  <div class="topic">
+    <h3>التحديات التي تواجه المشاركة السياسية</h3>
+    <div class="chips">
+      <span class="chip">1. التنشئة السياسية السلبية التي تفضّل الابتعاد عن المشاركة</span>
+      <span class="chip">2. محدودية الثقة في جدوى المشاركة السياسية</span>
+      <span class="chip">3. الأمية السياسية — عدم القدرة على المفاضلة بين الأحزاب</span>
+      <span class="chip">4. ضعف الحس الوطني لدى بعض أفراد المجتمع</span>
+      <span class="chip">5. ضعف قدرة بعض الأحزاب على جذب أكبر عدد من الناس</span>
+    </div>
+  </div>
+
+  <div class="topic">
+    <h3>خطوات العملية الانتخابية</h3>
+    <details class="mem" open>
+      <summary>1. قيد الناخبين</summary>
+      <div class="body">
+        <ul>
+          <li><b>نظام القيد الشخصي:</b> اختياري — يسجّل الناخب اسمه بنفسه</li>
+          <li><b>نظام القيد غير الشخصي:</b> إجباري — يتم التسجيل عن طريق وزارة الداخلية، وله نوعان:
+            <ul>
+              <li><b>القائمة الدائمة:</b> تتم مراجعتها خلال فترة زمنية محددة من سنة إلى أربع سنوات</li>
+              <li><b>القائمة المؤقتة:</b> تُعدّ قبل كل دورة انتخابية، وعلى الناخبين الإبلاغ خطيًا برغبتهم في المشاركة</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </details>
+    <details class="mem">
+      <summary>2. تسجيل المرشحين</summary>
+      <div class="body"><p>الترشح للانتخابات من جانب المواطنين.</p></div>
+    </details>
+    <details class="mem">
+      <summary>3. الحملات الانتخابية</summary>
+      <div class="body"><p>يُسمح للناخبين بالقيام بحملات انتخابية (دعايا) للمرشحين.</p></div>
+    </details>
+    <details class="mem">
+      <summary>4. عملية الاقتراح / الاقتراع</summary>
+      <div class="body"><p>تحديد موعد الانتخابات، ويتم الاقتراع يدويًا أو إلكترونيًا.</p></div>
+    </details>
+    <details class="mem">
+      <summary>5. عملية الفرز</summary>
+      <div class="body"><p>فرز أصوات الناخبين.</p></div>
+    </details>
+    <details class="mem">
+      <summary>6. إعلان النتيجة</summary>
+      <div class="body"><p>إعلان قائمة الفائزين وعدد الأصوات التي حصل عليها كل منهم.</p></div>
+    </details>
+  </div>
+
+  <div class="topic">
+    <h3>أنظمة الانتخابات</h3>
+    <div class="compare">
+      <div>
+        <h5>الانتخاب الفردي</h5>
+        <ul>
+          <li>تُقسَّم الدوائر إلى دوائر انتخابية صغيرة حسب عدد مقاعد البرلمان</li>
+          <li>يفوز المرشح إذا حصل على 50%+1 من إجمالي عدد الأصوات</li>
+        </ul>
+      </div>
+      <div>
+        <h5>الانتخاب بالقائمة</h5>
+        <ul>
+          <li><b>القوائم المغلقة:</b> يتم اختيارها كما هي دون تعديلات</li>
+          <li><b>القوائم المفتوحة:</b> تتميز بمرونة تسمح للناخب بالتعديل حسب رغبته</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic">
+    <h3>الفرق بين الانتخابات: المراقبة والإشراف</h3>
+    <div class="compare">
+      <div>
+        <h5>المراقبة</h5>
+        <ul><li>عن طريق جهات محايدة تلاحظ العملية الانتخابية وتكتب عنها تقارير</li></ul>
+      </div>
+      <div>
+        <h5>الإشراف</h5>
+        <ul><li>عن طريق الجهات الحكومية وغير الحكومية تحت إشراف القضاء</li></ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic">
+    <h3>أهم الثورات المصرية</h3>
+
+    <details class="mem" open>
+      <summary>ثورة 1919 م — الزعيم: سعد زغلول</summary>
+      <div class="body">
+        <p><b>الأسباب:</b></p>
+        <ul>
+          <li>ازدياد نمو الوعي الوطني بفضل مصطفى كامل ومحمد فريد</li>
+          <li>الإجراءات التعسفية التي اتخذتها سلطات الاحتلال أثناء الحرب العالمية الأولى</li>
+          <li>ادعاء إنجلترا وحلفائها بأنها تحارب من أجل حرية الشعوب واستقلالها</li>
+          <li>إعلان الرئيس الأمريكي ويلسون مبادئه الأربعة عشر "حق تقرير المصير"</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="mem">
+      <summary>ثورة 23 يوليو 1952 م — نظّمها الضباط الأحرار</summary>
+      <div class="body">
+        <p><b>الأسباب:</b></p>
+        <ul>
+          <li>هزيمة الجيش المصري في حرب فلسطين 1948</li>
+          <li>فساد النظام الملكي</li>
+          <li>عدم وجود حياة ديمقراطية سليمة</li>
+          <li>تدهور أحوال مصر الاقتصادية</li>
+          <li>استمرار الاحتلال البريطاني وتدخله في شؤون مصر</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="mem">
+      <summary>ثورة 25 يناير 2011 م</summary>
+      <div class="body">
+        <p>ساهمت وسائل الاتصالات والتكنولوجيا في اندلاع هذه الثورة.</p>
+        <p><b>الأسباب:</b></p>
+        <ul>
+          <li>تزوير انتخابات مجلس الشعب 2010</li>
+          <li>تدهور الأحوال الاقتصادية والاجتماعية للمصريين</li>
+          <li>انتشار الفساد الإداري والسياسي</li>
+          <li>زيادة عدد السكان وسوء توزيعهم</li>
+          <li>كبت الحريات وقيام قانون الطوارئ</li>
+        </ul>
+        <p><b>الأهداف:</b></p>
+        <ul>
+          <li>حل مجلس الشعب والشورى</li>
+          <li>تولّي الجيش حفظ الأمن</li>
+          <li>عزل قيادات الشرطة الفاسدة</li>
+          <li>تشكيل حكومة انتقالية</li>
+          <li>إشراف قضائي كامل على الانتخابات</li>
+          <li>تجميد أموال المسؤولين السابقين</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="mem">
+      <summary>ثورة 30 يونيو 2013 م — أكبر ثورة شعبية في العالم</summary>
+      <div class="body">
+        <p><b>الأسباب:</b></p>
+        <ul>
+          <li>عدم وجود حلول فعلية للعدالة الاجتماعية</li>
+          <li>تزايد حدة الاحتجاجات الشعبية</li>
+          <li>سوء استخدام موارد الدولة</li>
+          <li>انتشار الفوضى وانعدام الأمن</li>
+          <li>قلق الشعب على فقدان الهوية المصرية</li>
+        </ul>
+        <p><b>ملامح خارطة الطريق للثورة:</b></p>
+        <ul>
+          <li>تعطيل العمل بالدستور بشكل مؤقت</li>
+          <li>يتولّى رئيس المحكمة الدستورية العليا إدارة شؤون البلاد، وله الحق في إصدار إعلانات دستورية</li>
+          <li>تشكيل لجنة من مختلف القوى لمراجعة التعديلات المقترحة على الدستور</li>
+          <li>وضع ميثاق شرف إعلامي</li>
+          <li>تشكيل لجنة عليا للمصالحة الوطنية</li>
+        </ul>
+      </div>
+    </details>
+  </div>
 </section>
 
 </main>
 
-<footer>تلخيص للمراجعة السريعة — اضغط على أي عنوان لفتح التفاصيل، أو استخدم البحث أعلاه للوصول السريع لأي معلومة.</footer>
-
-<script>
-  const search = document.getElementById('search');
-  const lessons = Array.from(document.querySelectorAll('details.lesson'));
-  const units = Array.from(document.querySelectorAll('section.unit'));
-
-  search.addEventListener('input', () => {
-    const q = search.value.trim().toLowerCase();
-    if(!q){
-      lessons.forEach(l => { l.classList.remove('hide'); });
-      units.forEach(u => u.classList.remove('hide'));
-      return;
-    }
-    units.forEach(u => {
-      let anyVisible = false;
-      u.querySelectorAll('details.lesson').forEach(l => {
-        const text = l.textContent.toLowerCase();
-        if(text.includes(q)){
-          l.classList.remove('hide');
-          l.open = true;
-          anyVisible = true;
-        } else {
-          l.classList.add('hide');
-        }
-      });
-      u.classList.toggle('hide', !anyVisible);
-    });
-  });
-
-  document.getElementById('expandAll').addEventListener('click', () => {
-    lessons.forEach(l => l.open = true);
-  });
-  document.getElementById('collapseAll').addEventListener('click', () => {
-    lessons.forEach(l => l.open = false);
-  });
-</script>
+<footer>
+  <div class="brand">مراجعة الوطنية — الصف الثالث الثانوي</div>
+  إعداد: أ/ محمد ناصر — أستاذ مادة الجغرافيا والتاريخ<br>
+  01017188028 - 01013353859
+</footer>
 
 </body>
 </html>
